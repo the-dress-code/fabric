@@ -96,26 +96,27 @@
      (errors (:errors request)))
 
     (coast/form-for ::create
-      (label {:for "fabric/width"} "width")
-      (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
 
       (label {:for "fabric/yards"} "yards")
       (input {:type "text" :name "fabric/yards" :value (-> request :params :fabric/yards)})
 
-      (label {:for "fabric/structure"} "structure")
-      (input {:type "text" :name "fabric/structure" :value (-> request :params :fabric/structure)})
-
       (label {:for "fabric/shade"} "shade")
       (input {:type "text" :name "fabric/shade" :value (-> request :params :fabric/shade)})
-
-      (label {:for "fabric/content"} "content")
-      (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
 
       (label {:for "fabric/color"} "color")
       (input {:type "text" :name "fabric/color" :value (-> request :params :fabric/color)})
 
       (label {:for "fabric/weight"} "weight")
       (input {:type "text" :name "fabric/weight" :value (-> request :params :fabric/weight)})
+
+      (label {:for "fabric/structure"} "structure")
+      (input {:type "text" :name "fabric/structure" :value (-> request :params :fabric/structure)})
+
+      (label {:for "fabric/content"} "content")
+      (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
+
+      (label {:for "fabric/width"} "width")
+      (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
 
       (link-to (coast/url-for ::index) "Cancel")
       (submit "New fabric"))))
