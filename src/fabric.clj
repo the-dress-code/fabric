@@ -20,25 +20,25 @@
        (table
         (thead
           (tr
-            (th "width")
             (th "yards")
-            (th "structure")
-            (th "id")
-            (th "shade")
-            (th "content")
+            (th "shade")  
             (th "color")
-            (th "weight")))
+            (th "weight")
+            (th "structure")
+            (th "content")
+            (th "width")
+            (th "id")))
         (tbody
           (for [row rows]
             (tr
-              (td (:fabric/width row))
-              (td (:fabric/yards row))
-              (td (:fabric/structure row))
-              (td (:fabric/id row))
-              (td (:fabric/color-intensity row))
-              (td (:fabric/content row))
+              (td (:fabric/yards row))              
+              (td (:fabric/shade row))
               (td (:fabric/color row))
               (td (:fabric/weight row))
+              (td (:fabric/structure row))
+              (td (:fabric/content row))
+              (td (:fabric/width row))
+              (td (:fabric/id row))
               (td
                 (link-to (coast/url-for ::view row) "View"))
               (td
@@ -62,7 +62,7 @@
         (dd (:fabric/structure fabric))
 
         (dt "shade")
-        (dd (:fabric/color-intensity fabric))
+        (dd (:fabric/shade fabric))
 
         (dt "content")
         (dd (:fabric/content fabric))
@@ -105,8 +105,8 @@
       (label {:for "fabric/structure"} "structure")
       (input {:type "text" :name "fabric/structure" :value (-> request :params :fabric/structure)})
 
-      (label {:for "fabric/color-intensity"} "color-intensity")
-      (input {:type "text" :name "fabric/color-intensity" :value (-> request :params :fabric/color-intensity)})
+      (label {:for "fabric/shade"} "shade")
+      (input {:type "text" :name "fabric/shade" :value (-> request :params :fabric/shade)})
 
       (label {:for "fabric/content"} "content")
       (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
@@ -122,8 +122,8 @@
 
 
 (defn create [request]
-  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/width :fabric/yards :fabric/structure :fabric/color-intensity :fabric/content :fabric/color :fabric/weight]]])
-                       (select-keys [:fabric/width :fabric/yards :fabric/structure :fabric/color-intensity :fabric/content :fabric/color :fabric/weight])
+  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
+                       (select-keys [:fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
                        (coast/insert)
                        (coast/rescue))]
     (if (nil? errors)
@@ -147,8 +147,8 @@
         (label {:for "fabric/structure"} "structure")
         (input {:type "text" :name "fabric/structure" :value (:fabric/structure fabric)})
 
-        (label {:for "fabric/color-intensity"} "color-intensity")
-        (input {:type "text" :name "fabric/color-intensity" :value (:fabric/color-intensity fabric)})
+        (label {:for "fabric/shade"} "shade")
+        (input {:type "text" :name "fabric/shade" :value (:fabric/shade fabric)})
 
         (label {:for "fabric/content"} "content")
         (input {:type "text" :name "fabric/content" :value (:fabric/content fabric)})
@@ -167,8 +167,8 @@
   (let [fabric (coast/fetch :fabric (-> request :params :fabric-id))
         [_ errors] (-> (select-keys fabric [:fabric/id])
                        (merge (:params request))
-                       (coast/validate [[:required [:fabric/id :fabric/width :fabric/yards :fabric/structure :fabric/color-intensity :fabric/content :fabric/color :fabric/weight]]])
-                       (select-keys [:fabric/id :fabric/width :fabric/yards :fabric/structure :fabric/color-intensity :fabric/content :fabric/color :fabric/weight])
+                       (coast/validate [[:required [:fabric/id :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
+                       (select-keys [:fabric/id :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
                        (coast/update)
                        (coast/rescue))]
     (if (nil? errors)
