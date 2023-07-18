@@ -139,26 +139,27 @@
         (errors (:errors request)))
 
       (coast/form-for ::change fabric
-        (label {:for "fabric/width"} "width")
-        (input {:type "text" :name "fabric/width" :value (:fabric/width fabric)})
 
         (label {:for "fabric/yards"} "yards")
         (input {:type "text" :name "fabric/yards" :value (:fabric/yards fabric)})
 
-        (label {:for "fabric/structure"} "structure")
-        (input {:type "text" :name "fabric/structure" :value (:fabric/structure fabric)})
-
         (label {:for "fabric/shade"} "shade")
         (input {:type "text" :name "fabric/shade" :value (:fabric/shade fabric)})
-
-        (label {:for "fabric/content"} "content")
-        (input {:type "text" :name "fabric/content" :value (:fabric/content fabric)})
 
         (label {:for "fabric/color"} "color")
         (input {:type "text" :name "fabric/color" :value (:fabric/color fabric)})
 
         (label {:for "fabric/weight"} "weight")
         (input {:type "text" :name "fabric/weight" :value (:fabric/weight fabric)})
+
+        (label {:for "fabric/structure"} "structure")
+        (input {:type "text" :name "fabric/structure" :value (:fabric/structure fabric)})
+
+        (label {:for "fabric/content"} "content")
+        (input {:type "text" :name "fabric/content" :value (:fabric/content fabric)})
+
+        (label {:for "fabric/width"} "width")
+        (input {:type "text" :name "fabric/width" :value (:fabric/width fabric)})
 
         (link-to (coast/url-for ::index) "Cancel")
         (submit "Update fabric")))))
