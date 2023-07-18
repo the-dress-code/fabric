@@ -27,7 +27,7 @@
             (th "structure")
             (th "content")
             (th "width")
-            (th "id")))
+            ))
         (tbody
           (for [row rows]
             (tr
@@ -38,7 +38,7 @@
               (td (:fabric/structure row))
               (td (:fabric/content row))
               (td (:fabric/width row))
-              (td (:fabric/id row))
+             
               (td
                 (link-to (coast/url-for ::view row) "View"))
               (td
