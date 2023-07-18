@@ -26,8 +26,7 @@
             (th "weight")
             (th "structure")
             (th "content")
-            (th "width")
-            ))
+            (th "width")))
         (tbody
           (for [row rows]
             (tr
@@ -38,7 +37,6 @@
               (td (:fabric/structure row))
               (td (:fabric/content row))
               (td (:fabric/width row))
-             
               (td
                 (link-to (coast/url-for ::view row) "View"))
               (td
@@ -52,26 +50,28 @@
         fabric (coast/fetch :fabric id)]
     (container {:mw 8}
       (dl
-        (dt "width")
-        (dd (:fabric/width fabric))
 
         (dt "yards")
         (dd (:fabric/yards fabric))
 
-        (dt "structure")
-        (dd (:fabric/structure fabric))
-
         (dt "shade")
         (dd (:fabric/shade fabric))
-
-        (dt "content")
-        (dd (:fabric/content fabric))
 
         (dt "color")
         (dd (:fabric/color fabric))
 
         (dt "weight")
         (dd (:fabric/weight fabric)))
+
+        (dt "structure")
+        (dd (:fabric/structure fabric))
+
+        (dt "content")
+        (dd (:fabric/content fabric))
+
+        (dt "width")
+        (dd (:fabric/width fabric))
+
       (mr2
         (link-to (coast/url-for ::index) "List"))
       (mr2
