@@ -10,11 +10,11 @@
                         :limit 10])]
     (container {:mw 8}
      (when (not (empty? rows))
-      (link-to (coast/url-for ::build) "New fabric"))
+      (link-to (coast/url-for ::build) "Add new fabric"))
 
      (when (empty? rows)
       (tc
-        (link-to (coast/url-for ::build) "New fabric")))
+        (link-to (coast/url-for ::build) "Add new fabric")))
 
      (when (not (empty? rows))
        (table
@@ -119,7 +119,7 @@
       (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
 
       (link-to (coast/url-for ::index) "Cancel")
-      (submit "New fabric"))))
+      (submit "Add new fabric"))))
 
 
 (defn create [request]
