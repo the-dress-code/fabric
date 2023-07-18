@@ -24,7 +24,7 @@
             (th "yards")
             (th "structure")
             (th "id")
-            (th "color-intensity")
+            (th "shade")
             (th "content")
             (th "color")
             (th "weight")))
@@ -61,7 +61,7 @@
         (dt "structure")
         (dd (:fabric/structure fabric))
 
-        (dt "color-intensity")
+        (dt "shade")
         (dd (:fabric/color-intensity fabric))
 
         (dt "content")
