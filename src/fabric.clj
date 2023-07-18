@@ -25,8 +25,6 @@
             (th "structure")
             (th "id")
             (th "color-intensity")
-           
-            (th "created-at")
             (th "content")
             (th "color")
             (th "weight")))
@@ -38,8 +36,6 @@
               (td (:fabric/structure row))
               (td (:fabric/id row))
               (td (:fabric/color-intensity row))
-              (td (:fabric/updated-at row))
-              (td (:fabric/created-at row))
               (td (:fabric/content row))
               (td (:fabric/color row))
               (td (:fabric/weight row))
