@@ -25,7 +25,7 @@
             (th "structure")
             (th "id")
             (th "color-intensity")
-            (th "updated-at")
+           
             (th "created-at")
             (th "content")
             (th "color")
