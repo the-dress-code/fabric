@@ -20,6 +20,7 @@
        (table
         (thead
           (tr
+            (th "image")
             (th "yards")
             (th "shade")  
             (th "color")
@@ -30,6 +31,7 @@
         (tbody
           (for [row rows]
             (tr
+              (td (:fabric/image-url row))
               (td (:fabric/yards row))              
               (td (:fabric/shade row))
               (td (:fabric/color row))
@@ -50,6 +52,9 @@
         fabric (coast/fetch :fabric id)]
     (container {:mw 8}
       (dl
+
+        (dt "image")
+        (dd (:fabric/image-url fabric))
 
         (dt "yards")
         (dd (:fabric/yards fabric))
@@ -97,6 +102,9 @@
 
     (coast/form-for ::create
 
+      (label {:for "fabric/image-url"} "image")
+      (input {:type "text" :name "fabric/image-url" :value (-> request :params :fabric/image-url)})
+
       (label {:for "fabric/yards"} "yards")
       (input {:type "text" :name "fabric/yards" :value (-> request :params :fabric/yards)})
 
@@ -123,8 +131,8 @@
 
 
 (defn create [request]
-  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
-                       (select-keys [:fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
+  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/image-url :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
+                       (select-keys [:fabric/image-url :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
                        (coast/insert)
                        (coast/rescue))]
     (if (nil? errors)
@@ -139,6 +147,9 @@
         (errors (:errors request)))
 
       (coast/form-for ::change fabric
+
+        (label {:for "fabric/image-url"} "image")
+        (input {:type "text" :name "fabric/image-url" :value (:fabric/image-url fabric)})
 
         (label {:for "fabric/yards"} "yards")
         (input {:type "text" :name "fabric/yards" :value (:fabric/yards fabric)})
