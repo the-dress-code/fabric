@@ -1,11 +1,14 @@
 {:dev {:database "fabric_dev.sqlite3"
-       :adapter "sqlite"}
+       :adapter "sqlite"
+       :debug true}
 
  :test {:database "fabric_test.sqlite3"
-        :adapter "sqlite"}
+        :adapter "sqlite"
+        :debug true}
 
  :prod {:database #env :db-name
-        :adapter "sqlite"}}
+        :adapter "sqlite"
+        :debug true}}
 
  ; or you can use postgres
 
