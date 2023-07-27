@@ -1,6 +1,18 @@
 (ns queries
   (:require [coast]))
 
+
+
+
+
+
+
+
+
+
+
+
+
 (coast/q '[:select * 
            :from fabric
            :order yards desc])
@@ -16,12 +28,19 @@
            :where [yards 3]])
 ; returned all fabrics 3 yards only
 
+(coast/q '[:select * 
+           :from fabric
+           :where [yards <= 3]])
+; not what i want: it returned all fabrics 3 yards only, not the ones under 3
+
 (coast/q '[:select yards shade color weight content
            :from fabric
            :where ["yards <= 3"]])
 ; returned all fabrics 3 yards and under
 
-(coast/q '["SELECT yards,shade,color,weight,content From fabric WHERE yards<=3"])
+(coast/q '["SELECT yards,shade,color,weight,content
+            From fabric 
+            WHERE yards<=3"])
 ;; => ({:yards 3,
 ;;      :shade "medium",
 ;;      :color "green",
