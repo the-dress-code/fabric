@@ -129,8 +129,8 @@
 
 
 (defn create [request]
-  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
-                       (select-keys [:fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
+  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
+                       (select-keys [:fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
                        (coast/insert)
                        (coast/rescue))]
     (if (nil? errors)
