@@ -54,6 +54,9 @@
         (dt "yards")
         (dd (:fabric/yards fabric))
 
+        (dt "item #")
+        (dd (:fabric/item-number fabric))
+
         (dt "shade")
         (dd (:fabric/shade fabric))
 
@@ -99,6 +102,9 @@
 
       (label {:for "fabric/yards"} "yards")
       (input {:type "text" :name "fabric/yards" :value (-> request :params :fabric/yards)})
+
+      (label {:for "fabric/item-number"} "item #")
+      (input {:type "text" :name "fabric/item-number" :value (-> request :params :fabric/item-number)})
 
       (label {:for "fabric/shade"} "shade")
       (input {:type "text" :name "fabric/shade" :value (-> request :params :fabric/shade)})
