@@ -149,6 +149,9 @@
         (label {:for "fabric/yards"} "yards")
         (input {:type "text" :name "fabric/yards" :value (:fabric/yards fabric)})
 
+        (label {:for "fabric/item-number"} "item #")
+        (input {:type "text" :name "fabric/item-number" :value (:fabric/item-number fabric)})
+
         (label {:for "fabric/shade"} "shade")
         (input {:type "text" :name "fabric/shade" :value (:fabric/shade fabric)})
 
