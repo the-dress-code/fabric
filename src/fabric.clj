@@ -7,7 +7,7 @@
   (let [rows (coast/q '[:select *
                         :from fabric
                         :order yards desc
-                        :limit 10])]
+                        :limit 20])]
     (container {:mw 8}
      (when (not (empty? rows))
       (link-to (coast/url-for ::build) "Add new fabric"))
