@@ -6,7 +6,7 @@
 (defn index [request]
   (let [rows (coast/q '[:select *
                         :from fabric
-                        :order yards desc
+                        :order structure desc content asc color desc
                         :limit 20])]
     (container {:mw 8}
      (when (not (empty? rows))
