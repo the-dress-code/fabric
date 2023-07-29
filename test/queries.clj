@@ -1,18 +1,6 @@
 (ns queries
   (:require [coast]))
 
-
-
-
-
-
-
-
-
-
-
-
-
 (coast/q '[:select * 
            :from fabric
            :order yards desc])
@@ -36,38 +24,9 @@
 (coast/q '[:select yards shade color weight content
            :from fabric
            :where ["yards <= 3"]])
-; returned all fabrics 3 yards and under
+; returned all fabrics 3 yards and under, only fields of yards shade color weight conten
 
 (coast/q '["SELECT yards,shade,color,weight,content
             From fabric 
             WHERE yards<=3"])
-;; => ({:yards 3,
-;;      :shade "medium",
-;;      :color "green",
-;;      :weight "mid-weight",
-;;      :content "linen"}
-;;     {:yards 1,
-;;      :shade "light",
-;;      :color "blue",
-;;      :weight "light-weight",
-;;      :content "cotton"}
-;;     {:yards 2,
-;;      :shade "dark",
-;;      :color "black",
-;;      :weight "mid-weight",
-;;      :content "cotton lycra"}
-;;     {:yards 3,
-;;      :shade "light",
-;;      :color "brown white",
-;;      :weight "mid-weight",
-;;      :content "linen"}
-;;     {:yards 1,
-;;      :shade "light",
-;;      :color "multi",
-;;      :weight "light-weight",
-;;      :content "cotton"}
-;;     {:yards 1,
-;;      :shade "med",
-;;      :color "green",
-;;      :weight "mid",
-;;      :content "linen"})
+
