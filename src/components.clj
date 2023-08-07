@@ -102,6 +102,11 @@
   [:input (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} m)])
 
 
+(defn select [l o]
+  [:select {:name l :id l}
+   [:option {:value o} o]])
+
+
 (defn text-muted [s]
   [:div {:class "f6 tc gray"}
    s])
