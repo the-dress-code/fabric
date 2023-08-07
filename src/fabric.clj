@@ -1,6 +1,6 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt submit input label]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt submit input select label]]))
 
 
 (defn index [request]
@@ -101,6 +101,7 @@
     (coast/form-for ::create
 
       (label {:for "fabric/yards"} "yards")
+      (select "yards" "1")
       (input {:type "text" :name "fabric/yards" :value (-> request :params :fabric/yards)})
 
       (label {:for "fabric/item-number"} "item #")
