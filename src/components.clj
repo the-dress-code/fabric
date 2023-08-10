@@ -102,25 +102,18 @@
   [:input (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} m)])
 
 
-(defn select [l o]
-  [:select {:name l :id l}
-   [:option {:value o} o]])
-
-
 (defn option [o]
   [:option {:value o} o])
 
 
-(defn select-reduce [stuff]
-  (reduce (fn [acc nxt] (conj acc nxt)) [] stuff))
+(defn map-option [o]
+  (map option o))
 
 
-(defn select-4 [option]
-  (reduce (fn [acc nxt] (conj acc nxt)) 
-          [:select
-           [:option {:value option} option]] 
-          option))
-
+(defn select [l o]
+  (apply (partial conj 
+                  [:select {:name l :id l}])
+         (map-option o)))
 
 (defn text-muted [s]
   [:div {:class "f6 tc gray"}
