@@ -107,12 +107,15 @@
       (input {:type "text" :name "fabric/item-number" :value (-> request :params :fabric/item-number)})
 
       (label {:for "fabric/shade"} "shade")
+      (select "shade" ["" "pale" "light" "medium" "dark"])
       (input {:type "text" :name "fabric/shade" :value (-> request :params :fabric/shade)})
 
       (label {:for "fabric/color"} "color")
+      (select "color" ["" "blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"])
       (input {:type "text" :name "fabric/color" :value (-> request :params :fabric/color)})
 
       (label {:for "fabric/weight"} "weight")
+      (select "weight" ["" "light-weight" "mid-weight" "heavy-weight"])
       (input {:type "text" :name "fabric/weight" :value (-> request :params :fabric/weight)})
 
       (label {:for "fabric/structure"} "structure")
@@ -122,7 +125,7 @@
       (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
 
       (label {:for "fabric/width"} "width")
-      (select "width" "54")
+      (select "width" ["" "35in" "44in" "45in" "50in" "54in" "60in"])
       (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
 
       (link-to (coast/url-for ::index) "Cancel")
