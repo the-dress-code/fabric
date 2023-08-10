@@ -1,6 +1,6 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt submit select input label]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt submit select option input label]]))
 
 
 (defn index [request]
@@ -122,6 +122,7 @@
       (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
 
       (label {:for "fabric/width"} "width")
+      (select "width" "54")
       (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
 
       (link-to (coast/url-for ::index) "Cancel")
