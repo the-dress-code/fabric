@@ -115,7 +115,6 @@
       (input {:type "text" :name "fabric/color" :value (-> request :params :fabric/color)})
 
       (label {:for "fabric/weight"} "weight")
-      (select "weight" ["" "light-weight" "mid-weight" "heavy-weight"])
       (input {:type "text" :name "fabric/weight" :value (-> request :params :fabric/weight)})
 
       (label {:for "fabric/structure"} "structure")
