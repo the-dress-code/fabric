@@ -112,8 +112,9 @@
 
 (defn select [l o]
   (apply (partial conj 
-                  [:select {:name l :id l}])
-         (map-option o)))
+           [:select {:name l :id l}])
+            (map-option o)))
+
 
 (defn text-muted [s]
   [:div {:class "f6 tc gray"}
