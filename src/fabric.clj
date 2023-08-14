@@ -101,14 +101,13 @@
     (coast/form-for ::create
 
       (label {:for "fabric/yards"} "yards")
-      (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25" :value (-> request :params :fabric/yards)})
+      (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25"})
 
       (label {:for "fabric/item-number"} "item #")
-      (input {:type "text" :name "fabric/item-number" :value (-> request :params :fabric/item-number)})
+      (input {:type "text" :name "fabric/item-number"})
 
       (label {:for "fabric/shade"} "shade")
-      (select "shade" ["" "pale" "light" "medium" "dark"])
-      (input {:type "text" :name "fabric/shade" :value (-> request :params :fabric/shade)})
+      (select "fabric/shade" ["" "pale" "light" "medium" "dark"])
 
       (label {:for "fabric/color"} "color")
       (select "color" ["" "blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"])
@@ -124,7 +123,7 @@
       (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
 
       (label {:for "fabric/width"} "width")
-      (select "width" ["" "35in" "44in" "45in" "50in" "54in" "60in"])
+      (select "width" ["" "< 35" "35in" "44in" "45in" "50in" "54in" "60in" "> 60in"])
       (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
 
       (link-to (coast/url-for ::index) "Cancel")
