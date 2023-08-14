@@ -101,7 +101,7 @@
     (coast/form-for ::create
 
       (label {:for "fabric/yards"} "yards")
-      (input {:type "number" :name "fabric/yards" :value (-> request :params :fabric/yards)})
+      (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25" :value (-> request :params :fabric/yards)})
 
       (label {:for "fabric/item-number"} "item #")
       (input {:type "text" :name "fabric/item-number" :value (-> request :params :fabric/item-number)})
