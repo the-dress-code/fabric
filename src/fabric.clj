@@ -150,7 +150,7 @@
       (coast/form-for ::change fabric
 
         (label {:for "fabric/yards"} "yards")
-        (input {:type "text" :name "fabric/yards" :value (:fabric/yards fabric)})
+        (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25" :value (:fabric/yards fabric)})
 
         (label {:for "fabric/item-number"} "item #")
         (input {:type "text" :name "fabric/item-number" :value (:fabric/item-number fabric)})
