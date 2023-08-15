@@ -153,10 +153,10 @@
         (input {:type "text" :name "fabric/item-number" :value (:fabric/item-number fabric)})
 
         (label {:for "fabric/shade"} "shade")
-        (select "fabric/shade" [(:fabric/shade fabric) "pale" "neon" "light" "medium" "dark"])
-        #_ (input {:value (:fabric/shade fabric)})
-
+        (select "fabric/shade" {} ["pale" "neon" "light" "medium" "dark"] (:fabric/shade fabric))
+   
         (label {:for "fabric/color"} "color")
+        ;; resume here
         (input {:type "text" :name "fabric/color" :value (:fabric/color fabric)})
 
         (label {:for "fabric/weight"} "weight")
