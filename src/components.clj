@@ -103,7 +103,7 @@
 
 
 (defn option [o]
-  [:option (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} {:value o}) o])
+  [:option {:value o} o])
 
 
 (defn map-option [o]
@@ -112,8 +112,8 @@
 
 (defn select [l o]
   (apply (partial conj 
-           [:select {:name l :id l}])
-            (map-option o)))
+          [:select (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} {:name l :id l})])
+           (map-option o)))
 
 
 (defn text-muted [s]
