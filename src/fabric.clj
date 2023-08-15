@@ -107,24 +107,22 @@
       (input {:type "text" :name "fabric/item-number"})
 
       (label {:for "fabric/shade"} "shade")
-      (select "fabric/shade" ["" "pale" "light" "medium" "dark"])
+      (select "fabric/shade" ["" "pale" "neon" "light" "medium" "dark"])
 
       (label {:for "fabric/color"} "color")
-      (select "color" ["" "blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"])
-      (input {:type "text" :name "fabric/color" :value (-> request :params :fabric/color)})
+      (select "fabric/color" ["" "blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"])
 
       (label {:for "fabric/weight"} "weight")
-      (input {:type "text" :name "fabric/weight" :value (-> request :params :fabric/weight)})
+      (select "fabric/weight" ["" "lightweight" "midweight" "heavyweight"])
 
       (label {:for "fabric/structure"} "structure")
-      (input {:type "text" :name "fabric/structure" :value (-> request :params :fabric/structure)})
+      (select "fabric/structure" ["" "woven" "knit" "nonwoven" "skin" "felt"])
 
       (label {:for "fabric/content"} "content")
-      (input {:type "text" :name "fabric/content" :value (-> request :params :fabric/content)})
+      (select "fabric/content" ["" "cotton" "linen" "silk" "wool" "hemp" "rayon" "nylon" "polyester"])
 
       (label {:for "fabric/width"} "width")
-      (select "width" ["" "< 35" "35in" "44in" "45in" "50in" "54in" "60in" "> 60in"])
-      (input {:type "text" :name "fabric/width" :value (-> request :params :fabric/width)})
+      (select "fabric/width" ["" "< 35" "35in" "44in" "45in" "50in" "54in" "60in" "> 60in"])
 
       (link-to (coast/url-for ::index) "Cancel")
       (submit "Add new fabric"))))
