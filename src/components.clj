@@ -103,7 +103,7 @@
 
 
 (defn option [o]
-  [:option {:value o} o])
+  [:option (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} {:value o}) o])
 
 
 (defn map-option [o]
