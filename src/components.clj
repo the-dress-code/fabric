@@ -102,18 +102,25 @@
   [:input (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} m)])
 
 
-(defn option [o]
-  [:option {:value o} o])
+(defn option [o s]
+  (if (= o s)
+    [:option {:value o :selected "selected"} o]
+    [:option {:value o} o]))
 
 
-(defn map-option [o]
-  (map option o))
+(defn map-option [o s]
+  (map (fn [x] (option x s)) o))
 
 
-(defn select [l o]
-  (apply (partial conj 
-          [:select (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} {:name l :id l})])
-           (map-option o)))
+(defn select 
+  ([l o] 
+    (select l {} o))
+  ([l m o]
+    (select l m o ""))
+  ([l m o s]
+   (apply (partial conj 
+           [:select (merge {:class "input-reset ba b--black-20 pa2 mb2 db w-100 outline-0"} {:name l :id l} m)])
+          (map-option o s))))
 
 
 (defn text-muted [s]
