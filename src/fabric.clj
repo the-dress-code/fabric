@@ -156,26 +156,19 @@
         (select "fabric/shade" {} ["pale" "neon" "light" "medium" "dark"] (:fabric/shade fabric))
    
         (label {:for "fabric/color"} "color")
-
-        ;; resume here
-
-        (input {:type "text" :name "fabric/color" :value (:fabric/color fabric)})
-
-
-
-
+        (select "fabric/color" {} ["blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"] (:fabric/color fabric))
 
         (label {:for "fabric/weight"} "weight")
-        (input {:type "text" :name "fabric/weight" :value (:fabric/weight fabric)})
+        (select "fabric/weight" {} ["lightweight" "midweight" "heavyweight"] (:fabric/weight fabric))
 
         (label {:for "fabric/structure"} "structure")
-        (input {:type "text" :name "fabric/structure" :value (:fabric/structure fabric)})
+        (select "fabric/structure" {} ["woven" "knit" "nonwoven" "skin" "felt"] (:fabric/structure fabric))
 
         (label {:for "fabric/content"} "content")
-        (input {:type "text" :name "fabric/content" :value (:fabric/content fabric)})
+        (select "fabric/content" {} ["cotton" "linen" "silk" "wool" "hemp" "rayon" "nylon" "polyester"] (:fabric/content fabric))
 
         (label {:for "fabric/width"} "width")
-        (input {:type "text" :name "fabric/width" :value (:fabric/width fabric)})
+        (select "fabric/width" {} ["< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "60\"" "> 60\""] (:fabric/width fabric))
 
         (link-to (coast/url-for ::index) "Cancel")
         (submit "Update fabric")))))
