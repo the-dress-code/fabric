@@ -20,6 +20,7 @@
        (table
         (thead
           (tr
+            (th "image")
             (th "yards")
             (th "shade")  
             (th "color")
@@ -30,6 +31,7 @@
         (tbody
           (for [row rows]
             (tr
+              (td (:fabric/image row))
               (td (:fabric/yards row))              
               (td (:fabric/shade row))
               (td (:fabric/color row))
@@ -50,6 +52,9 @@
         fabric (coast/fetch :fabric id)]
     (container {:mw 8}
       (dl
+
+        (dt "image")
+        (dd (:fabric/image fabric))
 
         (dt "yards")
         (dd (:fabric/yards fabric))
@@ -100,6 +105,9 @@
 
     (coast/form-for ::create
 
+      (label {:for "fabric/image"} "image")
+      (input {:type "url" :name "fabric/image"})
+
       (label {:for "fabric/yards"} "yards")
       (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25"})
 
@@ -145,6 +153,9 @@
         (errors (:errors request)))
 
       (coast/form-for ::change fabric
+
+        (label {:for "fabric/image"} "image")
+        (input {:type "url" :name "fabric/image" :value (:fabric/image fabric)})
 
         (label {:for "fabric/yards"} "yards")
         (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25" :value (:fabric/yards fabric)})
