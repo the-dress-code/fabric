@@ -130,7 +130,7 @@
       (select "fabric/content" ["" "cotton" "linen" "silk" "wool" "hemp" "rayon" "nylon" "polyester"])
 
       (label {:for "fabric/width"} "width")
-      (select "fabric/width" ["" "< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "60\"" "> 60\""])
+      (select "fabric/width" ["" "< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "58\"" "59\"" "60\"" "> 60\""])
 
       (link-to (coast/url-for ::index) "Cancel")
       (submit "Add new fabric"))))
@@ -179,7 +179,7 @@
         (select "fabric/content" {} ["cotton" "linen" "silk" "wool" "hemp" "rayon" "nylon" "polyester"] (:fabric/content fabric))
 
         (label {:for "fabric/width"} "width")
-        (select "fabric/width" {} ["< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "60\"" "> 60\""] (:fabric/width fabric))
+        (select "fabric/width" {} ["< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "58\"" "59\"" "60\"" "> 60\""] (:fabric/width fabric))
 
         (link-to (coast/url-for ::index) "Cancel")
         (submit "Update fabric")))))
