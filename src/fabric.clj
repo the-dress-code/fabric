@@ -54,7 +54,7 @@
       (dl
 
         (dt "image")
-        (dd (:fabric/image fabric))
+        (dd [:img {:src (str (:fabric/image fabric))}])
 
         (dt "yards")
         (dd (:fabric/yards fabric))
