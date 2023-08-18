@@ -118,7 +118,7 @@
       (select "fabric/shade" ["" "pale" "neon" "light" "medium" "dark"])
 
       (label {:for "fabric/color"} "color")
-      (select "fabric/color" ["" "blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"])
+      (select "fabric/color" ["" "blue" "green" "yellow" "orange" "red" "pink" "purple" "teal" "brown" "grey" "black" "white"])
 
       (label {:for "fabric/weight"} "weight")
       (select "fabric/weight" ["" "lightweight" "midweight" "heavyweight"])
@@ -167,7 +167,7 @@
         (select "fabric/shade" {} ["pale" "neon" "light" "medium" "dark"] (:fabric/shade fabric))
    
         (label {:for "fabric/color"} "color")
-        (select "fabric/color" {} ["blue" "green" "yellow" "orange" "red" "purple" "teal" "brown" "grey" "black" "white"] (:fabric/color fabric))
+        (select "fabric/color" {} ["blue" "green" "yellow" "orange" "red" "pink" "purple" "teal" "brown" "grey" "black" "white"] (:fabric/color fabric))
 
         (label {:for "fabric/weight"} "weight")
         (select "fabric/weight" {} ["lightweight" "midweight" "heavyweight"] (:fabric/weight fabric))
