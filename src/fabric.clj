@@ -53,8 +53,8 @@
     (container {:mw 8}
       (dl
 
-        (dt "image")
-        (dd [:img {:src (str (:fabric/image fabric))}])
+        (dt "")
+        (dd [:img {:src (str (:fabric/image fabric)) :alt "a good description" :style "max-width:100px;height:auto;"}])
 
         (dt "yards")
         (dd (:fabric/yards fabric))
