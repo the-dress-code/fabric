@@ -189,8 +189,8 @@
   (let [fabric (coast/fetch :fabric (-> request :params :fabric-id))
         [_ errors] (-> (select-keys fabric [:fabric/id])
                        (merge (:params request))
-                       (coast/validate [[:required [:fabric/id :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
-                       (select-keys [:fabric/id :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
+                       (coast/validate [[:required [:fabric/id :fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
+                       (select-keys [:fabric/id :fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
                        (coast/update)
                        (coast/rescue))]
     (if (nil? errors)
