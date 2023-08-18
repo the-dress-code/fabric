@@ -20,7 +20,7 @@
        (table
         (thead
           (tr
-            (th "image")
+            (th "")
             (th "yards")
             (th "shade")  
             (th "color")
