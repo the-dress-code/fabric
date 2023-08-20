@@ -1,6 +1,6 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt submit select option input label]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label]]))
 
 
 (defn index [request]
