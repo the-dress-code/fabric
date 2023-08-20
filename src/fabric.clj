@@ -34,7 +34,7 @@
         (tbody
           (for [row rows]
             (tr
-              (td [:img {:src (str (:fabric/image row)) :alt "a good description" :style "max-width:100px;height:auto;"}])
+              (td (img (:fabric/image row) (:fabric/color row) "max-width:100px;height:auto;"))
               (td (:fabric/yards row))              
               (td (:fabric/shade row))
               (td (:fabric/color row))
