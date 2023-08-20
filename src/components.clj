@@ -94,6 +94,12 @@
       body])))
 
 
+(defn img [path color style]
+  [:img {:src (str path) 
+         :alt (str color)
+         :style style}])
+
+
 (defn label [m s]
   [:label (merge {:for s :class "f6 b db mb2"} m) s])
 
