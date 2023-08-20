@@ -97,7 +97,7 @@
 (defn img [path color]
   [:img {:src (str path) 
          :alt (str color)
-         :style "max-width:75px;height:auto;"}])
+         :style "max-width:100px;height:auto;"}])
 
 
 (defn label [m s]
