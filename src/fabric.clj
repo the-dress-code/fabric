@@ -10,8 +10,11 @@
                         #_#__:limit 20])]
     (container {:mw 8}
      (when (not (empty? rows))
-      (link-to (coast/url-for ::build) "Add new fabric"))
+      (link-to (coast/url-for ::build) "Add new fabric")
+      #_(link-to (coast/url-for ::search) "Search for fabric"))
 
+;; link to search page
+   
      (when (empty? rows)
       (tc
         (link-to (coast/url-for ::build) "Add new fabric")))
