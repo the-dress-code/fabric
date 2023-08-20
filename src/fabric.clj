@@ -57,7 +57,8 @@
       (dl
 
         (dt "")
-        (dd [:img {:src (str (:fabric/image fabric)) :alt "a good description" :style "max-width:100px;height:auto;"}])
+        (dd (img (:fabric/image fabric) (:fabric/color fabric) "max-width:100px;height:auto;"))
+        #_(dd [:img {:src (str (:fabric/image fabric)) :alt "a good description" :style "max-width:100px;height:auto;"}])
 
         (dt "yards")
         (dd (:fabric/yards fabric))
