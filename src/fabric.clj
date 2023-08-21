@@ -1,54 +1,11 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label]]))
-
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results]]))
 
 (defn index [request]
-  (let [rows (coast/q '[:select *
+  (results request '[:select *
                         :from fabric
-                        :order image desc yards desc structure desc color desc 
-                        #_#__:limit 20])]
-    (container {:mw 8}
-     (when (not (empty? rows))
-      (link-to (coast/url-for ::build) "Add new fabric")
-      #_(link-to (coast/url-for ::search) "Search for fabric"))
-
-;; link to search page
-   
-     (when (empty? rows)
-      (tc
-        (link-to (coast/url-for ::build) "Add new fabric")))
-
-     (when (not (empty? rows))
-       (table
-        (thead
-          (tr
-            (th "")
-            (th "yards")
-            (th "shade")  
-            (th "color")
-            (th "weight")
-            (th "structure")
-            (th "content")
-            (th "width")))
-        (tbody
-          (for [row rows]
-            (tr
-              (td (img (:fabric/image row) (:fabric/color row)))
-              (td (:fabric/yards row))              
-              (td (:fabric/shade row))
-              (td (:fabric/color row))
-              (td (:fabric/weight row))
-              (td (:fabric/structure row))
-              (td (:fabric/content row))
-              (td (:fabric/width row))
-              (td
-                (link-to (coast/url-for ::view row) "View"))
-              (td
-                (link-to (coast/url-for ::edit row) "Edit"))
-              (td
-                (button-to (coast/action-for ::delete row) {:data-confirm "Are you sure?"} "Delete"))))))))))
-
+                        :order image desc yards desc structure desc color desc]))
 
 (defn view [request]
   (let [id (-> request :params :fabric-id)
