@@ -8,6 +8,7 @@
     (coast/site
       (coast/with-layout components/layout
         [:get "/" :site.home/index]
+        [:get "/fabrics/search" :fabric/search]
         [:resource :fabric]))
 
     (coast/api
