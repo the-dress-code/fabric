@@ -98,7 +98,8 @@
 
     (container {:mw 8}
      (when (not (empty? rows))
-      (link-to (coast/url-for :fabric/build) "Add new fabric"))
+      (link-to (coast/url-for :fabric/build) "Add new fabric")
+      #_(link-to (coast/url-for :fabric/search) "Search for fabric"))
    
      (when (empty? rows)
       (tc
