@@ -4,8 +4,8 @@
 
 (defn index [request]
   (results request '[:select *
-                        :from fabric
-                        :order image desc yards desc structure desc color desc]))
+                     :from fabric
+                     :order image desc yards desc structure desc color desc]))
 
 (defn view [request]
   (let [id (-> request :params :fabric-id)
@@ -159,7 +159,8 @@
 
 
 (defn search [request]
- [:div "Hello, search page! Here I will use the results fn to build my search queries. "])
+ [:div "Hello, search page! Here I will use the results fn to build my search queries. "]
+ [:a {:href (coast/url-for :fabric/index) :class "f6 link underline blue"} "back to fabrics"])
 
 
 (defn delete [request]
