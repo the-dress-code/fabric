@@ -97,49 +97,6 @@
       body])))
 
 
-(defn results [request query]
-  (let [rows (coast/q query)]
-
-    (container {:mw 8}
-     (when (not (empty? rows))
-       [(link-to (coast/url-for :fabric/build) "Add new fabric")
-        (link-to (coast/url-for :fabric/search) "Search for fabric")])
-   
-     (when (empty? rows)
-      (tc
-        (link-to (coast/url-for :fabric/build) "Add new fabric")))
-
-     (when (not (empty? rows))
-       (table
-        (thead
-          (tr
-            (th "")
-            (th "yards")
-            (th "shade")  
-            (th "color")
-            (th "weight")
-            (th "structure")
-            (th "content")
-            (th "width")))
-        (tbody
-          (for [row rows]
-            (tr
-              (td (img (:fabric/image row) (:fabric/color row)))
-              (td (:fabric/yards row))              
-              (td (:fabric/shade row))
-              (td (:fabric/color row))
-              (td (:fabric/weight row))
-              (td (:fabric/structure row))
-              (td (:fabric/content row))
-              (td (:fabric/width row))
-              (td
-                (link-to (coast/url-for :fabric/view row) "View"))
-              (td
-                (link-to (coast/url-for :fabric/edit row) "Edit"))
-              (td
-                (button-to (coast/action-for :fabric/delete row) {:data-confirm "Are you sure?"} "Delete"))))))))))
-
-
 (defn img [path color]
   [:img {:src (str path) 
          :alt (str color)
