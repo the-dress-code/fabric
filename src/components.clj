@@ -12,9 +12,12 @@
      body]])
 
 
-(defn link-to [url & body]
-  [:a {:href url :class "f6 link underline blue"}
-    body])
+(defn link-to 
+  ([url body]
+   (link-to url "" body))
+  ([url class body]
+   [:a {:href url :class (str "f6 link underline blue " class)}
+    body]))
 
 
 (defn button-to
