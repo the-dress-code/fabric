@@ -189,4 +189,4 @@
       (select "fabric/color" ["" "blue" "green" "yellow" "orange" "red" "pink" "purple" "teal" "brown" "grey" "black" "white"])
 
       (link-to (coast/url-for ::index) "Cancel")
-      (submit "Search for fabric")))
+      (submit "Search for fabric"))))
