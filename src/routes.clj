@@ -9,6 +9,7 @@
       (coast/with-layout components/layout
         [:get "/" :site.home/index]
         [:get "/fabrics/search" :fabric/search]
+        [:get "/fabrics/answers" :fabric/answers]
         [:resource :fabric]))
 
     (coast/api
