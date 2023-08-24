@@ -178,7 +178,22 @@
 
 
 (defn search [request]
-  [:div {:class "nav"}
+
+  (container {:mw 6}
+    (when (some? (:errors request))
+     (errors (:errors request)))
+
+    (coast/form-for ::answers
+
+
+      (label {:for "fabric/color"} "color")
+      (select "fabric/color" ["" "blue" "green" "yellow" "orange" "red" "pink" "purple" "teal" "brown" "grey" "black" "white"])
+
+      (link-to (coast/url-for ::index) "Cancel")
+      (submit "Search for fabric")))
+
+
+  #_[:div {:class "nav"}
    [:a {:href "http://localhost:1337/fabrics/answers?color=blue"
         :class "f6 link underline blue"} 
     "Search for blue fabrics"]
