@@ -30,3 +30,8 @@
             From fabric 
             WHERE yards<=3"])
 
+(coast/q '[:select *
+           :from fabric
+           :where [color "blue"]
+           :order image desc yards desc structure desc color desc])
+; returns only all blue fabrics
