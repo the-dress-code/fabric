@@ -169,7 +169,7 @@
 
 
 (defn answers [request]
-  (let [color (:color (:params request))]
+  (let [color (:fabric/color (:params request))]
     (results request '[:select *
                        :from fabric
                        :where [color ?color]
@@ -178,7 +178,6 @@
 
 
 (defn search [request]
-
   (container {:mw 6}
     (when (some? (:errors request))
      (errors (:errors request)))
@@ -191,13 +190,3 @@
 
       (link-to (coast/url-for ::index) "Cancel")
       (submit "Search for fabric")))
-
-
-  #_[:div {:class "nav"}
-   [:a {:href "http://localhost:1337/fabrics/answers?color=blue"
-        :class "f6 link underline blue"} 
-    "Search for blue fabrics"]
-   [:br]
-   [:a {:href "http://localhost:1337/fabrics/answers?color=green"
-        :class "f6 link underline blue"} 
-    "Search for green fabrics"]])
