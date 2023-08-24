@@ -9,3 +9,7 @@ html, body {
 .right-link {
     float: right;
 }
+
+.nav {
+    width: 100%;
+}
