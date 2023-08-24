@@ -169,65 +169,20 @@
 
 
 (defn answers [request]
-  (let [value (:params request)]
-    (results request value)))
-
-
-; let to store param query
-; use result from search in query in answers
-; "answers" calls "results"
-; "search" sends "answers" the value of blue
-
-; what am i going to bind in this fn?
-;  the value from result of search
-
+  (let [color (:color (:params request))]
+    (results request '[:select *
+                       :from fabric
+                       :where [color ?color]
+                       :order image desc yards desc structure desc color desc]
+             {:color color})))
 
 
 (defn search [request]
-  [:a {:href "http://localhost:1337/fabrics/answers?color=blue"
-       :class "f6 link underline blue"} 
-   "Search for blue fabrics."])
-
-
-#_(defn resulting-table [request]
-  (let [rows (coast/q '[:select *
-                        :from fabric
-                        :order image desc yards desc structure desc color desc 
-                        #_#__:limit 20])]
-    (container {:mw 8}
-      `(~(link-to (coast/url-for :fabric/build) "left-link" "Add new fabric")
-         ~(link-to (coast/url-for :fabric/search) "right-link" "Search for fabric")))
-   
-     (when (empty? rows)
-      (tc
-        (link-to (coast/url-for ::build) "Add new fabric")))
-
-     (when (not (empty? rows))
-       (table
-        (thead
-          (tr
-            (th "")
-            (th "yards")
-            (th "shade")  
-            (th "color")
-            (th "weight")
-            (th "structure")
-            (th "content")
-            (th "width")))
-        (tbody
-          (for [row rows]
-            (tr
-              (td (img (:fabric/image row) (:fabric/color row)))
-              (td (:fabric/yards row))              
-              (td (:fabric/shade row))
-              (td (:fabric/color row))
-              (td (:fabric/weight row))
-              (td (:fabric/structure row))
-              (td (:fabric/content row))
-              (td (:fabric/width row))
-              (td
-                (link-to (coast/url-for ::view row) "View"))
-              (td
-                (link-to (coast/url-for ::edit row) "Edit"))
-              (td
-                (button-to (coast/action-for ::delete row) {:data-confirm "Are you sure?"} "Delete")))))))))
+  [:div {:class "nav"}
+   [:a {:href "http://localhost:1337/fabrics/answers?color=blue"
+        :class "f6 link underline blue"} 
+    "Search for blue fabrics"]
+   [:br]
+   [:a {:href "http://localhost:1337/fabrics/answers?color=green"
+        :class "f6 link underline blue"} 
+    "Search for green fabrics"]])
