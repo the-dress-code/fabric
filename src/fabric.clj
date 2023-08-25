@@ -184,9 +184,51 @@
 
     (coast/form-for ::answers
 
+      #_(label {:for "fabric/yards"} "minimum yards")
+      #_(input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25"})
+
+      #_(label {:for "fabric/item-number"} "item #")
+      #_(input {:type "text" :name "fabric/item-number"})
+
+      (label {:for "fabric/shade"} "shade")
+      (select "fabric/shade" ["" "pale" "neon" "light" "medium" "dark"])
 
       (label {:for "fabric/color"} "color")
-      (select "fabric/color" ["" "blue" "green" "yellow" "orange" "red" "pink" "purple" "teal" "brown" "grey" "black" "white"])
+      (select "fabric/color" (get-column :color 'color 'fabric)) 
+
+      (label {:for "fabric/weight"} "weight")
+      (select "fabric/weight" ["" "lightweight" "midweight" "heavyweight"])
+
+      (label {:for "fabric/structure"} "structure")
+      (select "fabric/structure" ["" "woven" "knit" "nonwoven" "skin" "felt"])
+
+      (label {:for "fabric/content"} "content")
+      (select "fabric/content" ["" "cotton" "linen" "silk" "wool" "hemp" "rayon" "nylon" "polyester"])
+
+      #_(label {:for "fabric/width"} "width")
+      #_(select "fabric/width" ["" "< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "58\"" "59\"" "60\"" "> 60\""])
 
       (link-to (coast/url-for ::index) "Cancel")
       (submit "Search for fabric"))))
+
+
+(comment 
+
+ ; write a query that works
+
+  (coast/q '[:select *
+             :from fabric
+             :where [color "brown"]])
+
+ ; write a query that returns all colors from db that are distinct
+
+  (coast/q '[:select :distinct color
+             :from fabric])
+
+ ; get all the values
+
+  (mapv :color (coast/q '[:select :distinct color
+                          :from fabric]))
+  ;; => ["green" "black" "blue" "brown" "yellow" "grey" "purple" "red"]
+
+  )
