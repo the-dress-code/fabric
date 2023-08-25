@@ -203,3 +203,19 @@
                                             :from ?table]
                                           {:column column
                                            :table table})))))
+
+(defn where-filters [params]
+  (let [no-token (dissoc params :__anti-forgery-token)]
+    (reduce (fn [acc [k v]] 
+              (if (nil? v)
+                acc
+                (conj acc [(-> k
+                               name
+                               symbol)
+                           (->> k 
+                                name
+                                (str "?")
+                                symbol)]))) 
+            []
+            no-token)))
+
