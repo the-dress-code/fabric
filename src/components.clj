@@ -199,7 +199,7 @@
 
 
 (defn get-column [kw column table]
-  (mapv kw (coast/q '[:select :distinct ?column
-                       :from ?table]
-                    {:column column
-                     :table table})))
+  (apply vector (cons "" (mapv kw (coast/q '[:select :distinct ?column
+                                            :from ?table]
+                                          {:column column
+                                           :table table})))))
