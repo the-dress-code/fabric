@@ -169,12 +169,24 @@
 
 
 (defn answers [request]
-  (let [color (:fabric/color (:params request))]
+  (let [shade (::shade (:params request))
+        color (::color (:params request))
+        weight (::weight (:params request))
+        structure (::structure (:params request))
+        content (::content (:params request))]
     (results request '[:select *
                        :from fabric
-                       :where [color ?color]
+                       :where ([shade ?shade]
+                               [color ?color]
+                               [weight ?weight]
+                               [structure ?structure]
+                               [content ?content])
                        :order image desc yards desc structure desc color desc]
-             {:color color})))
+             {:shade shade 
+              :color color
+              :weight weight
+              :structure structure
+              :content content})))
 
 
 (defn search [request]
