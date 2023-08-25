@@ -205,19 +205,19 @@
       #_(input {:type "text" :name "fabric/item-number"})
 
       (label {:for "fabric/shade"} "shade")
-      (select "fabric/shade" ["" "pale" "neon" "light" "medium" "dark"])
+      (select "fabric/shade" (get-column :shade 'shade 'fabric))
 
       (label {:for "fabric/color"} "color")
       (select "fabric/color" (get-column :color 'color 'fabric)) 
 
       (label {:for "fabric/weight"} "weight")
-      (select "fabric/weight" ["" "lightweight" "midweight" "heavyweight"])
+      (select "fabric/weight" (get-column :weight 'weight 'fabric))
 
       (label {:for "fabric/structure"} "structure")
-      (select "fabric/structure" ["" "woven" "knit" "nonwoven" "skin" "felt"])
+      (select "fabric/structure" (get-column :structure 'structure 'fabric))
 
       (label {:for "fabric/content"} "content")
-      (select "fabric/content" ["" "cotton" "linen" "silk" "wool" "hemp" "rayon" "nylon" "polyester"])
+      (select "fabric/content" (get-column :content 'content 'fabric))
 
       #_(label {:for "fabric/width"} "width")
       #_(select "fabric/width" ["" "< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "58\"" "59\"" "60\"" "> 60\""])
