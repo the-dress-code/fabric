@@ -196,3 +196,10 @@
                         (link-to (coast/url-for :fabric/edit row) "Edit"))
                        (td
                         (button-to (coast/action-for :fabric/delete row) {:data-confirm "Are you sure?"} "Delete")))))))))))
+
+
+(defn get-column [kw column table]
+  (mapv kw (coast/q '[:select :distinct ?column
+                       :from ?table]
+                    {:column column
+                     :table table})))

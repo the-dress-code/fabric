@@ -1,11 +1,13 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column]]))
+
 
 (defn index [request]
   (results request '[:select *
                      :from fabric
                      :order image desc yards desc structure desc color desc]))
+
 
 (defn view [request]
   (let [id (-> request :params :fabric-id)
