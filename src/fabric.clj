@@ -1,6 +1,6 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column where-filters]]))
 
 
 (defn index [request]
@@ -176,14 +176,15 @@
         weight (::weight (:params request))
         structure (::structure (:params request))
         content (::content (:params request))]
-    (results request '[:select *
-                       :from fabric
-                       :where ([shade ?shade]
-                               [color ?color]
-                               [weight ?weight]
-                               [structure ?structure]
-                               [content ?content])
-                       :order image desc yards desc structure desc color desc]
+
+    (results (tap> request) '[:select *
+                         :from fabric
+                         :where ([shade ?shade]
+                                 [color ?color]
+                                 [weight ?weight]
+                                 [structure ?structure]
+                                 [content ?content])
+                         :order image desc yards desc structure desc color desc]
              {:shade shade 
               :color color
               :weight weight
@@ -226,23 +227,38 @@
       (submit "Search for fabric"))))
 
 
-(comment 
+(comment
 
- ; write a query that works
+(add-tap (bound-fn* clojure.pprint/pprint))
 
-  (coast/q '[:select *
-             :from fabric
-             :where [color "brown"]])
+(def debug-a (atom nil))
 
- ; write a query that returns all colors from db that are distinct
+(add-tap #(reset! debug-a %))
 
-  (coast/q '[:select :distinct color
-             :from fabric])
+(:params @debug-a)
+;; => {:__anti-forgery-token
+;;     "4dPHfA442CSXzoAhv889RHpm1BYrfQ563418ZNKe8vvEx+pj3I5KWjgbVCcEs2Eb6R2IF8itxatlbFXw",
+;;     :fabric/shade "light",
+;;     :fabric/color "blue",
+;;     :fabric/weight nil,
+;;     :fabric/structure "woven",
+;;     :fabric/content "linen"}
 
- ; get all the values
+(defn where-filters [params]
+  (let [no-token (dissoc params :__anti-forgery-token)]
+    (reduce (fn [acc [k v]] 
+              (if (nil? v)
+                acc
+                (conj acc [(-> k
+                               name
+                               symbol)
+                           (->> k 
+                                name
+                                (str "?")
+                                symbol)]))) 
+            []
+            no-token)))
 
-  (mapv :color (coast/q '[:select :distinct color
-                          :from fabric]))
-  ;; => ["green" "black" "blue" "brown" "yellow" "grey" "purple" "red"]
 
-  )
+)
+
