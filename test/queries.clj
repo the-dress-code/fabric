@@ -35,3 +35,18 @@
            :where [color "blue"]
            :order image desc yards desc structure desc color desc])
 ; returns only all blue fabrics
+
+(coast/q '[:select *
+           :from fabric
+           :where [color "brown"]])
+; returns only all "brown" fabrics
+
+(coast/q '[:select :distinct color
+           :from fabric])
+; returns all colors from db that are distinct
+
+(mapv :color (coast/q '[:select :distinct color
+                        :from fabric]))
+
+; get all the values
+;; => ["green" "black" "blue" "brown" "yellow" "grey" "purple" "red"]
