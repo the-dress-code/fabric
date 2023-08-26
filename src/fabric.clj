@@ -199,8 +199,8 @@
 
     (coast/form-for ::answers
 
-      #_(label {:for "fabric/yards"} "minimum yards")
-      #_(input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25"})
+      (label {:for "fabric/yards"} "minimum # of yards")
+      (input {:type "number" :name "fabric/yards" :min "0" :max "100" :step ".25"})
 
       #_(label {:for "fabric/item-number"} "item #")
       #_(input {:type "text" :name "fabric/item-number"})
@@ -220,7 +220,7 @@
       (label {:for "fabric/content"} "content")
       (select "fabric/content" (get-column :content 'content 'fabric))
 
-      #_(label {:for "fabric/width"} "width")
+      #_(label {:for "fabric/width"} "minimum width")
       #_(select "fabric/width" ["" "< 35\"" "35\"" "44\"" "45\"" "50\"" "54\"" "58\"" "59\"" "60\"" "> 60\""])
 
       (link-to (coast/url-for ::index) "Cancel")
