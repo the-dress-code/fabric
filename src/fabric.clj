@@ -171,21 +171,21 @@
 
 
 (defn answers [request]
-  (let [shade (::shade (:params request))
-        color (::color (:params request))
-        weight (::weight (:params request))
-        structure (::structure (:params request))
-        content (::content (:params request))]
+  (let [params (:params request)
+        yards (::yards params)
+        shade (::shade params)
+        color (::color params)
+        weight (::weight params)
+        structure (::structure params)
+        content (::content params)
+        filters (where-filters params)]
 
-    (results (tap> request) '[:select *
-                         :from fabric
-                         :where ([shade ?shade]
-                                 [color ?color]
-                                 [weight ?weight]
-                                 [structure ?structure]
-                                 [content ?content])
-                         :order image desc yards desc structure desc color desc]
-             {:shade shade 
+    (results (tap> request) (conj '[:select *
+                                    :from fabric
+                                    :order image desc yards desc structure desc color desc]
+                                  :where filters)
+             {:yards yards
+              :shade shade 
               :color color
               :weight weight
               :structure structure
