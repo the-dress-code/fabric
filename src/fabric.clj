@@ -180,7 +180,7 @@
         content (::content params)
         filters (where-filters params)]
 
-    (results (tap> request) (conj '[:select *
+    (results request (conj '[:select *
                                     :from fabric
                                     :order image desc yards desc structure desc color desc]
                                   :where filters)
@@ -244,21 +244,5 @@
 ;;     :fabric/structure "woven",
 ;;     :fabric/content "linen"}
 
-(defn where-filters [params]
-  (let [no-token (dissoc params :__anti-forgery-token)]
-    (reduce (fn [acc [k v]] 
-              (if (nil? v)
-                acc
-                (conj acc [(-> k
-                               name
-                               symbol)
-                           (->> k 
-                                name
-                                (str "?")
-                                symbol)]))) 
-            []
-            no-token)))
-
 
 )
-
