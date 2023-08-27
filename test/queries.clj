@@ -1,5 +1,7 @@
 (ns queries
-  (:require [coast]))
+  (:require [coast]
+            [components]
+            [fabric]))
 
 (coast/q '[:select * 
            :from fabric
