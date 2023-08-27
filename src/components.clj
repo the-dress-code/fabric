@@ -219,3 +219,12 @@
             []
             no-token)))
 
+
+(defn yards-minimum [x]
+  [(str "yards >= " x)])
+
+(defn yards-result [x]
+  (let [result (yards-minimum x)]
+    (coast/q (conj '[:select *
+                     :from fabric]
+                   :where result))))
