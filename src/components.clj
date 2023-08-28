@@ -204,27 +204,24 @@
                                           {:column column
                                            :table table})))))
 
+
+(defn yards-min  [x]
+  [(str "yards >= " x)])
+
+
 (defn where-filters [params]
   (let [no-token (dissoc params :__anti-forgery-token)]
     (reduce (fn [acc [k v]] 
               (if (nil? v)
                 acc
-                (conj acc [(-> k
-                               name
-                               symbol)
-                           (->> k 
-                                name
-                                (str "?")
-                                symbol)]))) 
+                (if (= k :fabric/yards)
+                  [(yards-min v)]
+                  (conj acc [(-> k
+                                 name
+                                 symbol)
+                             (->> k 
+                                  name
+                                  (str "?")
+                                  symbol)])))) 
             []
             no-token)))
-
-
-(defn yards-minimum [x]
-  [(str "yards >= " x)])
-
-(defn yards-result [x]
-  (let [result (yards-minimum x)]
-    (coast/q (conj '[:select *
-                     :from fabric]
-                   :where result))))
