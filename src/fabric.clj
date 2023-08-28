@@ -1,6 +1,6 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column where-filters]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column where-filters yards-min]]))
 
 
 (defn index [request]
@@ -168,6 +168,7 @@
       (coast/redirect-to ::index)
       (-> (coast/redirect-to ::index)
           (coast/flash "Something went wrong!")))))
+()
 
 
 (defn answers [request]
@@ -183,7 +184,7 @@
     (results request (conj '[:select *
                                     :from fabric
                                     :order image desc yards desc structure desc color desc]
-                                  :where filters)
+                           :where filters)
              {:yards yards
               :shade shade 
               :color color
@@ -231,9 +232,9 @@
 
 (add-tap (bound-fn* clojure.pprint/pprint))
 
-(def debug-a (atom nil))
+(def debug-c (atom nil))
 
-(add-tap #(reset! debug-a %))
+(add-tap #(reset! debug-c %))
 
 (:params @debug-a)
 ;; => {:__anti-forgery-token
@@ -244,5 +245,12 @@
 ;;     :fabric/structure "woven",
 ;;     :fabric/content "linen"}
 
+@debug-c
+;; => #:fabric{:yards 3,
+;;             :shade nil,
+;;             :color "blue",
+;;             :weight nil,
+;;             :structure nil,
+;;             :content nil}
 
 )
