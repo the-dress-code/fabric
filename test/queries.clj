@@ -11,6 +11,84 @@
 (coast/q '[:select * 
            :from fabric
            :where ["yards >= 3"]])
+;; => (#:fabric{:weight "lightweight",
+;;              :updated-at 1692329184,
+;;              :color "green",
+;;              :item-number "IL019",
+;;              :width "59\"",
+;;              :id 2,
+;;              :structure "woven",
+;;              :image
+;;              "https://fabrics-store.com/images/product/FS_F_10901680260822_1000x1000.jpg",
+;;              :shade "medium",
+;;              :created-at 1689638412,
+;;              :yards 3,
+;;              :content "linen"}
+;;     #:fabric{:weight "lightweight",
+;;              :updated-at 1692363708,
+;;              :color "black",
+;;              :item-number "IL019",
+;;              :width "54\"",
+;;              :id 3,
+;;              :structure "woven",
+;;              :image
+;;              "https://fabrics4fashion.com/cdn/shop/products/Black_Linen_Fabric_98186_3.jpg?v=1648398420&width=932",
+;;              :shade "dark",
+;;              :created-at 1689639101,
+;;              :yards 5,
+;;              :content "linen"}
+;;     #:fabric{:weight "lightweight",
+;;              :updated-at 1692496205,
+;;              :color "blue",
+;;              :item-number "19257021",
+;;              :width "45\"",
+;;              :id 9,
+;;              :structure "woven",
+;;              :image
+;;              "https://i.etsystatic.com/6276786/r/il/4742e7/933508539/il_680x540.933508539_o4tr.jpg",
+;;              :shade "dark",
+;;              :created-at 1690485724,
+;;              :yards 3.25,
+;;              :content "cotton"}
+;;     #:fabric{:weight "lightweight",
+;;              :updated-at 1692328384,
+;;              :color "brown",
+;;              :item-number "0",
+;;              :width "45\"",
+;;              :id 10,
+;;              :structure "woven",
+;;              :image
+;;              "https://raspberrycreekfabrics.com/cdn/shop/products/IMG_1668_2048x.jpg",
+;;              :shade "light",
+;;              :created-at 1690485869,
+;;              :yards 5,
+;;              :content "cotton"}
+;;     #:fabric{:weight "lightweight",
+;;              :updated-at 1692363521,
+;;              :color "blue",
+;;              :item-number "IL020",
+;;              :width "58\"",
+;;              :id 11,
+;;              :structure "woven",
+;;              :image
+;;              "https://fabrics-store.com/images/product/FS_F_18511680269571_1000x1000.jpg",
+;;              :shade "light",
+;;              :created-at 1690486046,
+;;              :yards 3,
+;;              :content "linen"}
+;;     #:fabric{:weight "lightweight",
+;;              :updated-at nil,
+;;              :color "blue",
+;;              :item-number "IL090",
+;;              :width "35\"",
+;;              :id 33,
+;;              :structure "felt",
+;;              :image
+;;              "https://fabrics-store.com/images/product/FS_F_21801680507936_1000x1000.jpg",
+;;              :shade "light",
+;;              :created-at 1692633937,
+;;              :yards 4,
+;;              :content "wool"})
 ; returned all fabrics 3 yards and greater
 
 (coast/q '[:select * 
@@ -49,6 +127,5 @@
 
 (mapv :color (coast/q '[:select :distinct color
                         :from fabric]))
-
 ; get all the values
 ;; => ["green" "black" "blue" "brown" "yellow" "grey" "purple" "red"]
