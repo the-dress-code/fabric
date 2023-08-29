@@ -7,7 +7,7 @@
   [:div
     (when (some? (:error/message request))
       [:div (:error/message request)])
-    (coast/form-for ::build
+    (coast/form-for ::create
       [:input {:type "text" :name "member/email"}]
       [:input {:type "password" :name "member/password"}]
       [:input {:type "submit" :value "Submit"}])])
