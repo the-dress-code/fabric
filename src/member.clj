@@ -25,6 +25,6 @@
 
 (defn dashboard [request]
   [:div 
-   [:h1 "You're signed in! Welcome!"]
+   [:h1 "You're signed in! Welcome to your fabric stash!"]
    (coast/form-for :session/delete
     [:input {:type "submit" :value "Sign out"}])])
