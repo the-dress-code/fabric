@@ -26,7 +26,7 @@
     (if (or (some? errors)
             (false? valid?))
       (build (merge errors request {:error/message "Invalid email or password"}))
-      (-> (coast/redirect-to ::dashboard)
+      (-> (coast/redirect-to :member/dashboard)
           (assoc :session (select-keys (:params request) [:member/email]))))))
 
 
