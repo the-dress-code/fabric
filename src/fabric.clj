@@ -230,22 +230,12 @@
 
 (comment
 
-(add-tap (bound-fn* clojure.pprint/pprint))
-
-(def debug-c (atom nil))
+(def debug-f (atom nil))
 
 (add-tap #(reset! debug-c %))
 
-(:params @debug-a)
-;; => {:__anti-forgery-token
-;;     "4dPHfA442CSXzoAhv889RHpm1BYrfQ563418ZNKe8vvEx+pj3I5KWjgbVCcEs2Eb6R2IF8itxatlbFXw",
-;;     :fabric/shade "light",
-;;     :fabric/color "blue",
-;;     :fabric/weight nil,
-;;     :fabric/structure "woven",
-;;     :fabric/content "linen"}
 
-@debug-c
+@debug-f
 ;; => #:fabric{:yards 3,
 ;;             :shade nil,
 ;;             :color "blue",
@@ -253,4 +243,21 @@
 ;;             :structure nil,
 ;;             :content nil}
 
+@debug-f
+; on create params request 
+;; => {:fabric/weight "lightweight",
+;;     :fabric/color "brown",
+;;     :fabric/item-number "7506-1",
+;;     :fabric/width "> 60\"",
+;;     :fabric/structure "woven",
+;;     :fabric/image
+;;     "https://burnleyandtrowbridge.com/cdn/shop/products/7506_704x704.jpg?v=1691508460",
+;;     :fabric/shade "pale",
+;;     :__anti-forgery-token
+;;     "Gf6cIZOfOByMSaFJC/spGAZr/8mTQ6j4SiEfjhhHTN7VgRvckMEITL1GpIzhsA5kXRtSbvVo6nMNjK2U",
+;;     :fabric/yards 3,
+;;     :fabric/content "linen"}
+
+
 )
+
