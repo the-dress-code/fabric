@@ -232,7 +232,7 @@
 
 (def debug-f (atom nil))
 
-(add-tap #(reset! debug-c %))
+(add-tap #(reset! debug-f %))
 
 
 @debug-f
