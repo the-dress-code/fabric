@@ -63,6 +63,11 @@
 ;;              "bcrypt+sha512$9970ca4b87c21df69b48138e379f393b$12$a6406dde27b1b55443f4158684649fee5d8ff5a17110136c"}
 ;;     nil]
 
+(def thing {:__anti-forgery-token
+             "A4kKk1KFHi7INThtqQsXCOrFP3J0Ts+OYilfc/4KKmhRJoe/PZntPVHR9gly8UsnZCke3E9/BrDSCxI9",
+             :member/email "signuptest908@gmail.com",   
+             :member/password "hello"})
+
 
 
 )
