@@ -19,12 +19,13 @@
         [valid? errors] (-> (:params request)
                             (select-keys [:member/email :member/password])
                             (coast/validate [[:email [:member/email]
-                                             [:required [:member/email :member/password]]]]) ; these three lines could be middleware
+                                              [:required [:member/email :member/password]]]]) ; these three lines could be middleware
                             (get :member/password) ; this returns the plaintext password from the params map
                             (hashers/check (:member/password member)) ; hashers/check is here
                             (coast/rescue))]
     (if (or (some? errors)
-            (false? valid?))
+            (false? valid?)
+            (nil? valid?))
       (build (merge errors request {:error/message "Invalid email or password"}))
       (-> (coast/redirect-to :member/dashboard)
           (assoc :session (select-keys (:params request) [:member/email]))))))
@@ -33,3 +34,14 @@
 (defn delete [request]
   (-> (coast/redirect-to ::build)
       (assoc :session nil)))
+
+
+(comment
+
+(def debug-s (atom nil))
+
+(add-tap #(reset! debug-s %))
+
+@debug-s
+
+)
