@@ -16,6 +16,7 @@
                        (coast/validate [[:email [:member/email]
                                         [:required [:member/email :member/password]]]])
                        (update :member/password hashers/derive)
+                       (coast/insert)
                        (coast/rescue))]
     (if (some? errors)
       (build (merge errors request))
@@ -37,37 +38,5 @@
 (add-tap #(reset! debug-m %))
 
 @debug-m
-; on params request on create
-;; => {:__anti-forgery-token
-;;     "A4kKk1KFHi7INThtqQsXCOrFP3J0Ts+OYilfc/4KKmhRJoe/PZntPVHR9gly8UsnZCke3E9/BrDSCxI9",
-;;     :member/email "signuptest908@gmail.com",
-;;     :member/password "hello"}
-
-(select-keys @debug-m [:member/email :member/password])
-;; => #:member{:email "signuptest908@gmail.com", :password "hello"}
-
-(coast/validate  #:member{:email "signuptest908@gmail.com", :password "hello"} 
-                 [[:email [:member/email]
-                          [:required [:member/email :member/password]]]])
-;; => #:member{:email "signuptest908@gmail.com", :password "hello"}
-
-(update #:member{:email "signuptest908@gmail.com", :password "hello"} :member/password hashers/derive)
-;; => #:member{:email "signuptest908@gmail.com",
-;;             :password
-;;             "bcrypt+sha512$9970ca4b87c21df69b48138e379f393b$12$a6406dde27b1b55443f4158684649fee5d8ff5a17110136c"}
-
-(coast/rescue  #:member{:email "signuptest908@gmail.com",
-                :password      "bcrypt+sha512$9970ca4b87c21df69b48138e379f393b$12$a6406dde27b1b55443f4158684649fee5d8ff5a17110136c"})
-;; => [#:member{:email "signuptest908@gmail.com",
-;;              :password
-;;              "bcrypt+sha512$9970ca4b87c21df69b48138e379f393b$12$a6406dde27b1b55443f4158684649fee5d8ff5a17110136c"}
-;;     nil]
-
-(def thing {:__anti-forgery-token
-             "A4kKk1KFHi7INThtqQsXCOrFP3J0Ts+OYilfc/4KKmhRJoe/PZntPVHR9gly8UsnZCke3E9/BrDSCxI9",
-             :member/email "signuptest908@gmail.com",   
-             :member/password "hello"})
-
-
 
 )

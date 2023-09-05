@@ -234,29 +234,7 @@
 
 (add-tap #(reset! debug-f %))
 
-
 @debug-f
-;; => #:fabric{:yards 3,
-;;             :shade nil,
-;;             :color "blue",
-;;             :weight nil,
-;;             :structure nil,
-;;             :content nil}
-
-@debug-f
-; on create params request 
-;; => {:fabric/weight "lightweight",
-;;     :fabric/color "brown",
-;;     :fabric/item-number "7506-1",
-;;     :fabric/width "> 60\"",
-;;     :fabric/structure "woven",
-;;     :fabric/image
-;;     "https://burnleyandtrowbridge.com/cdn/shop/products/7506_704x704.jpg?v=1691508460",
-;;     :fabric/shade "pale",
-;;     :__anti-forgery-token
-;;     "Gf6cIZOfOByMSaFJC/spGAZr/8mTQ6j4SiEfjhhHTN7VgRvckMEITL1GpIzhsA5kXRtSbvVo6nMNjK2U",
-;;     :fabric/yards 3,
-;;     :fabric/content "linen"}
 
 )
 
