@@ -5,9 +5,9 @@
 
 (defn build [request]
   (coast/form-for ::create
-    [:input {:type "text" :name "member/email"}]
-    [:input {:type "password" :name "member/password"}]
-    [:input {:type "submit" :value "Submit"}]))
+                  [:input {:type "text" :name "member/email" :required true}]
+                  [:input {:type "password" :name "member/password" :required true}]
+                  [:input {:type "submit" :value "Submit"}]))
 
 
 (defn create [request]
@@ -40,3 +40,4 @@
 @debug-m
 
 )
+
