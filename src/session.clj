@@ -5,6 +5,7 @@
 
 (defn build [request]
   [:div
+   [:h1 "Sign in, and return to your stash!"]
     (when (some? (:error/message request))
       [:div (:error/message request)])
     (coast/form-for ::create
