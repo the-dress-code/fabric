@@ -9,8 +9,7 @@
 
     (coast/site
 
-     [:get "/sign-up" :member/build]
-     [:post "/members" :member/create]
+    
      [:get "/sign-in" :session/build]
      [:post "/sessions" :session/create]
 
@@ -21,8 +20,11 @@
 
      (coast/with-layout components/layout
         [:get "/" :site.home/index]
+        [:get "/sign-up" :member/build]
+        [:post "/members" :member/create]
         [:get "/fabrics/search" :fabric/search]
         [:get "/fabrics/answers" :fabric/answers]
+        
         [:resource :fabric]))
 
     (coast/api
