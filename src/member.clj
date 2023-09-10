@@ -1,24 +1,41 @@
 (ns member
   (:require [coast]
+            [components :refer [thead th container input label select submit link-to table]]
             [buddy.hashers :as hashers]))
 
 
 (defn build [request]
-  [:div 
-   [:h1 "Sign up, and start stashin'!"]
-    (when (some? (:error/message request))
-      [:div (:error/message request)])
-    (coast/form-for ::create
-                   [:input {:type "text" :name "member/email" :required true}]
-                   [:input {:type "password" :name "member/password" :required true}]
-                   [:input {:type "submit" :value "Submit"}])])
+  (container {:mw 6}
+
+   (thead "SIGN UP")
+     [:p
+      [:br]]
+
+   (when (some? (:error/message request))
+                  [:div (:error/message request)])
+
+   (coast/form-for ::create
+
+    (label {:for "member/email"} "Email")
+    (input {:type "text" :name "member/email" :required true})
+
+    (label {:for "member/password"} "Password")
+    (input {:type "password" :name "member/password" :required true})
+
+    [:p {:style "color:gray;font-size:10px;"} "Password must start with a letter or special character."]
+
+    [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+             :type "submit" 
+             :value "SIGN UP"}]
+
+    [:p [:br] "Already a user? " (link-to (coast/url-for :session/build) "LOGIN")])))
 
 
 (defn create [request]
   (let [email (get-in request [:params :member/email])
         member (coast/find-by :member {:email email})]
     (if member
-      (build (merge request {:error/message "Email address already exists"}))
+      (build (merge request {:error/message "Email already exists. Proceed to LOGIN below."}))
       (let [[_ errors] (-> (:params request)
                            (select-keys [:member/email :member/password])
                            (coast/validate [[:email [:member/email]
@@ -34,7 +51,7 @@
 
 (defn dashboard [request]
   [:div 
-   [:H1 "You're signed in! Welcome to your fabric stash!"]
+   [:h1 "You're signed in! Welcome to your fabric stash!"]
    (coast/form-for :session/delete
     [:input {:type "submit" :value "Sign out"}])])
 
@@ -49,4 +66,3 @@
 @debug-m
 
 )
-
