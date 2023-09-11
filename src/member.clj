@@ -39,7 +39,7 @@
   (let [email (get-in request [:params :member/email])
         member (coast/find-by :member {:email email})]
     (if member
-      (coast/redirect-to :session/build)
+      (coast/redirect-to :session/build {:error "dupe"})
       (let [[_ errors] (-> (:params request)
                            (select-keys [:member/email :member/password])
                            (coast/validate [[:email [:member/email]

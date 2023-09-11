@@ -18,6 +18,13 @@
     (when (some? (:error/message request))
       [:div (:error/message request)])
 
+    (let [error (-> request
+                    :params
+                    :error)]
+      (when (= error "dupe")
+        [:p {:style "color:purple;"} "Looks like you're already a member! Try again." [:br]] ))
+
+
     (coast/form-for ::create
 
      (label {:for "member/email"} "Email")
