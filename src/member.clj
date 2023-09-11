@@ -24,18 +24,18 @@
 
     [:p {:style "color:gray;font-size:10px;"} "Password must start with a letter or special character."]
 
-    [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+    [:Input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
              :value "SIGN UP"}]
 
-    [:p [:br] "Already a user? " (link-to (coast/url-for :session/build) "LOGIN")])))
+    [:P [:br] "Already a user? " (link-to (coast/url-for :session/build) "LOGIN")])))
 
 
 (defn create [request]
   (let [email (get-in request [:params :member/email])
         member (coast/find-by :member {:email email})]
     (if member
-      (build (merge request {:error/message "Email already exists. Proceed to LOGIN below."}))
+      (coast/redirect-to :session/build)
       (let [[_ errors] (-> (:params request)
                            (select-keys [:member/email :member/password])
                            (coast/validate [[:email [:member/email]
