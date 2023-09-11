@@ -1,4 +1,3 @@
-
 (ns server
   (:require [coast]
             [routes])

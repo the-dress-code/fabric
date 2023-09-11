@@ -1,17 +1,32 @@
 (ns session
   (:require [coast]
+[components :refer [thead th container input label select submit link-to table]]
             [buddy.hashers :as hashers]))
 
 
 (defn build [request]
-  [:div
-   [:h1 "Sign in, and return to your stash!"]
+  (container {:mw 6}
+    
+    (thead "LOGIN")
+      [:p
+       [:br]]
+    
     (when (some? (:error/message request))
       [:div (:error/message request)])
+
     (coast/form-for ::create
-      [:input {:type "text" :name "member/email" :required true}]
-      [:input {:type "password" :name "member/password" :required true}]
-      [:input {:type "submit" :value "Submit"}])])
+
+     (label {:for "member/email"} "Email")
+     (input {:type "text" :name "member/email" :required true})
+
+     (label {:for "member/password"} "Password")
+     (input {:type "password" :name "member/password" :required true})
+
+     [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+             :type "submit" 
+             :value "LOGIN"}]
+
+     [:p [:br] "Need an account? " (link-to (coast/url-for :member/build) "SIGN UP")])))
 
 
 (defn create [request]
