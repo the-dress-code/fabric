@@ -5,6 +5,8 @@
 *.iml
 .env
 
+fabric_dev.sqlite3
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/emacs,clojure,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=emacs,clojure,macos
