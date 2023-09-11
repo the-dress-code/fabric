@@ -8,8 +8,12 @@
   (container {:mw 6}
 
    (thead "SIGN UP")
-     [:p
-      [:br]]
+
+   (when-not (or (some? (:error/message request))
+                 (some? (-> request
+                           :params
+                           :error))) 
+      [:p [:br]])
 
    (when (some? (:error/message request))
                   [:div (:error/message request)])
