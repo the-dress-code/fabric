@@ -26,8 +26,6 @@
     (label {:for "member/password"} "Password")
     (input {:type "password" :name "member/password" :required true})
 
-    [:p {:style "color:gray;font-size:10px;"} "Password must start with a letter or special character."]
-
     [:Input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
              :value "SIGN UP"}]
@@ -44,6 +42,8 @@
                            (select-keys [:member/email :member/password])
                            (coast/validate [[:email [:member/email]
                                              [:required [:member/email :member/password]]]])
+                           ; coast converts number strings to numbers, but buddy requires strings
+                           (update :member/password str)
                            (update :member/password hashers/derive)
                            (coast/insert)
                            (coast/rescue))]
@@ -65,7 +65,6 @@
 (def debug-m (atom nil))
 
 (add-tap #(reset! debug-m %))
-;; => nil
 
 @debug-m
 

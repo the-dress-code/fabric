@@ -48,6 +48,8 @@
                             (coast/validate [[:email [:member/email]
                                               [:required [:member/email :member/password]]]]) ; these three lines could be middleware
                             (get :member/password) ; this returns the plaintext password from the params map
+                             ; coast converts number strings to numbers, but buddy requires strings
+                            (str)                            
                             (hashers/check (:member/password member)) ; hashers/check is here
                             (coast/rescue))]
     (if (or (some? errors)
