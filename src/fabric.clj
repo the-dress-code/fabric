@@ -104,7 +104,8 @@
                   :member/email)
         id (-> (coast/q '[:select id
                           :from member
-                          :where [:email "st@loop.com"]])
+                          :where [:email ?email]]
+                        {:email email})
                first
                :id)
         [_ errors] (-> (coast/validate (:params request) [[:required [:fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
@@ -115,6 +116,16 @@
     (if (nil? errors)
       (coast/redirect-to ::index)
       (build (merge request errors)))))
+
+(comment
+
+(coast/q '[:select id
+                        :from member
+                          :where [:email ?email]]
+                        {:email "charles@barkley.com"})
+;; => ({:id 21})
+
+)
 
 
 (defn edit [request]
