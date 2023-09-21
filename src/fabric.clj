@@ -117,16 +117,6 @@
       (coast/redirect-to ::index)
       (build (merge request errors)))))
 
-(comment
-
-(coast/q '[:select id
-                        :from member
-                          :where [:email ?email]]
-                        {:email "charles@barkley.com"})
-;; => ({:id 21})
-
-)
-
 
 (defn edit [request]
   (let [fabric (coast/fetch :fabric (-> request :params :fabric-id))]
