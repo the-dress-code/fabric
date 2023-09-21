@@ -99,8 +99,15 @@
 
 
 (defn create [request]
-  (let [[_ errors] (-> (coast/validate (:params request) [[:required [:fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
+  (let [email (-> request
+                  :session
+                  :member/email)
+        id (map :id (coast/q '[:select id
+                               :from member
+                               :where [:email "st@loop.com"]]))
+        [_ errors] (-> (coast/validate (:params request) [[:required [:fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
                        (select-keys [:fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
+                       (assoc :fabric/user-id id)
                        (coast/insert)
                        (coast/rescue))]
     (if (nil? errors)
