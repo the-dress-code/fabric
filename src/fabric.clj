@@ -111,6 +111,7 @@
         [_ errors] (-> (coast/validate (:params request) [[:required [:fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight]]])
                        (select-keys [:fabric/image :fabric/item-number :fabric/width :fabric/yards :fabric/structure :fabric/shade :fabric/content :fabric/color :fabric/weight])
                        (assoc :fabric/user-id id)
+;;; TODO: only allow fabrics with user-ids to be inserted
                        (coast/insert)
                        (coast/rescue))]
     (if (nil? errors)
