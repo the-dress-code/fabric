@@ -6,8 +6,8 @@
 .env
 
 fabric_dev.sqlite3
-env.edn
 
+env.edn
 
 # Created by https://www.toptal.com/developers/gitignore/api/emacs,clojure,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=emacs,clojure,macos
