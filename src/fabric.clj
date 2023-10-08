@@ -6,7 +6,7 @@
 (defn index [request]
   (results request '[:select *
                      :from fabric
-                     :order image desc yards desc structure desc color desc]))
+                     :order color desc yards desc structure desc]))
 
 
 (defn view [request]
