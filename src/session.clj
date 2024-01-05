@@ -53,8 +53,7 @@
                             (hashers/check (:member/password member)) ; hashers/check is here
                             (coast/rescue))]
     (if (or (some? errors)
-            (false? valid?)
-            (nil? valid?))
+            (not valid?))
       (build (merge errors request {:error/message "Invalid email or password"}))
       (-> (coast/redirect-to :member/dashboard)
           (assoc :session (select-keys (:params request) [:member/email]))))))
