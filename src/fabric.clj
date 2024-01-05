@@ -179,7 +179,6 @@
       (coast/redirect-to ::index)
       (-> (coast/redirect-to ::index)
           (coast/flash "Something went wrong!")))))
-()
 
 
 (defn answers [request]

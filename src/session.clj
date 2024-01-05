@@ -22,7 +22,7 @@
                     :params
                     :error)]
       (when (= error "dupe")
-        [:p {:style "color:purple;"} "Looks like you're already a member! Try again." [:br]] ))
+        [:p {:style "color:purple;"} "Looks like you're already a member! Try again." [:br]]))
 
 
     (coast/form-for ::create

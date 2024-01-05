@@ -151,6 +151,12 @@
   [:div {:class "tc"}
    body])
 
+(defn member-email [request]
+  (let [email (-> request
+                  :session
+                  :member/email)]
+    email))
+
 
 (defn results 
   ([request query]
