@@ -5,9 +5,9 @@
 
 
 (coast/q '[:select id
-                        :from member
-                          :where [:email ?email]]
-                        {:email "charles@barkley.com"})
+           :from member
+           :where [:email ?email]]
+        {:email "charles@barkley.com"})
 ;; => ({:id 21})
 
 
