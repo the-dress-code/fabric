@@ -1,8 +1,11 @@
+;;;;;; LOGIN page (for existing users)
+
 (ns session
   (:require [coast]
-[components :refer [thead th container input label select submit link-to table]]
+            [components :refer [thead th container input label select submit link-to table]]
             [buddy.hashers :as hashers]))
 
+;;;;;; LOGIN form
 
 (defn build [request]
   (container {:mw 6}
