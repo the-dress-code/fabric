@@ -1,8 +1,12 @@
+
+;;;;;; SIGN UP page (for new members)
+
 (ns member
   (:require [coast]
             [components :refer [thead th container input label select submit link-to table]]
             [buddy.hashers :as hashers]))
 
+;;;;;; SIGN UP form
 
 (defn build [request]
   (container {:mw 6}
@@ -36,8 +40,8 @@
 (defn create [request]
   (let [email (get-in request [:params :member/email])
         member (coast/find-by :member {:email email})]
-    (if member
-      (coast/redirect-to :session/build {:error "dupe"})
+    (if member ;; if existing member
+      (coast/redirect-to :session/build {:error "dupe"}) ;; redirect to login dupe page. see session ns.
       (let [[_ errors] (-> (:params request)
                            (select-keys [:member/email :member/password])
                            (coast/validate [[:email [:member/email]
@@ -49,7 +53,7 @@
                            (coast/rescue))]
         (if (some? errors)
           (build (merge errors request))
-          (-> (coast/redirect-to ::dashboard)
+          (-> (coast/redirect-to ::dashboard) ;; if not exisiting member and no errors, go to dashboard page
               (assoc :session (select-keys (:params request) [:member/email]))))))))
 
 
