@@ -4,7 +4,8 @@
             [middleware]))
 
 
-(def routes
+(defn routes
+  []
   (coast/routes
 
     (coast/site
