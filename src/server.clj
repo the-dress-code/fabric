@@ -8,7 +8,8 @@
   (coast/app {:routes (routes/routes)}))
 
 (defn -main [& [port]]
-  (coast/server app {:port port}))
+  (coast/server (app) {:port port}))
 
 (comment
-  (-main))
+  (-main)
+)
