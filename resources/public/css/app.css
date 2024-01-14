@@ -13,3 +13,16 @@ html, body {
 .nav {
     width: 100%;
 }
+
+.banner {
+    background-color: lightslategrey;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 160%;
+}
