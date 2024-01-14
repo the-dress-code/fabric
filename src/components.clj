@@ -9,6 +9,8 @@
      (coast/css "bundle.css")
      (coast/js "bundle.js")]
     [:body
+     [:div {:class "banner"} 
+      "Fabric Stash" "[Home]" "[About]" "[Log In]" "[Sign Up]" ]
      body]])
 
 
