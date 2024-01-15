@@ -10,7 +10,7 @@
      (coast/js "bundle.js")]
     [:body
      [:div {:class "banner"} 
-      "Fabric Stash" "[Home]" "[About]" "[Log In]" "[Sign Up]" ]
+      "Fabric Stash " " [ Home ] " " [ About ] " "Hi,  " (member-email request) ""  " [ Sign Out ] " ]
      body]])
 
 
