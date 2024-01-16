@@ -9,8 +9,11 @@
      (coast/css "bundle.css")
      (coast/js "bundle.js")]
     [:body
-     [:div {:class "banner"} 
-      "Fabric Stash " " [ Home ] " " [ About ] " "Hi,  " (member-email request) ""  " [ Sign Out ] " ]
+     [:div {:class "banner"}
+      "Fabric Stash " " [ Home ] " " [ About ] " "Hi,  " (member-email request) ""     
+      (coast/form-for :session/delete
+                      [:input {:type "submit" :value "Sign out"}]) ;; borrowed this form from dashboard
+      ]
      body]])
 
 
