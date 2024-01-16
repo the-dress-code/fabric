@@ -34,7 +34,7 @@
              :type "submit" 
              :value "SIGN UP"}]
 
-    [:P [:br] "Already a user? " (link-to (coast/url-for :session/build) "LOGIN")])))
+    [:P [:br] "Already a member? " (link-to (coast/url-for :session/build) "LOGIN")])))
 
 
 (defn create [request]
