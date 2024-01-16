@@ -53,7 +53,7 @@
                            (coast/rescue))]
         (if (some? errors)
           (build (merge errors request))
-          (-> (coast/redirect-to ::dashboard) ;; if not exisiting member and no errors, go to dashboard page
+          (-> (coast/redirect-to :fabric/index) ;; if not exisiting member and no errors, go to fabrics/index page
               (assoc :session (select-keys (:params request) [:member/email]))))))))
 
 
@@ -61,7 +61,7 @@
   [:div 
    [:h1 "You're signed in! Welcome to your fabric stash!"]
    (coast/form-for :session/delete
-    [:input {:type "submit" :value "Sign out"}])])
+                   [:input {:type "submit" :value "Sign out"}])])
 
 
 (comment
