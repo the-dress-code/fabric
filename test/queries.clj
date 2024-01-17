@@ -43,6 +43,33 @@
            :order yards desc])
 ; returned all fabrics in yards descending order
 
+
+(coast/q '[:select * 
+           :from fabric
+           :where [:user-id "20"]
+           :order yards desc])
+;; returns all fabrics from user-id 20, by order of descending yards
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; NEED TO SEE REQUEST
+
+;; to be continued
+(defn do-stuff [request]
+  (let [user-id (-> request
+                    :session
+                    :member/id)])
+
+  (coast/q '[:select * 
+             :from fabric
+             :where [:user-id ?user-id]
+             :order yards desc]
+           {:user-id user-id}))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (coast/q '[:select * 
            :from fabric
            :where ["yards >= 3"]])
