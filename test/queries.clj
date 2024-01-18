@@ -4,6 +4,42 @@
             [fabric]))
 
 
+(coast/q '[:select * 
+           :from fabric
+           :where [:user-id "20"]
+           :order yards desc])
+;; returns all fabrics from user-id 20, by order of descending yards
+
+
+;:: LET OFF HERE 
+
+(defn get-member-fabrics [request]
+  (coast/q '[:select * 
+             :from fabric
+             :where [:user-id ?user-id]
+             :order yards desc]
+           {:user-id (-> request
+                         components/member-email
+                         components/member-id)}))
+
+(get-member-fabrics @fabric/debug-f)
+;; => (#:fabric{:weight "lightweight",
+;;              :updated-at nil,
+;;              :color "brown",
+;;              :item-number "IL020",
+;;              :width "58\"",
+;;              :id 50,
+;;              :structure "woven",
+;;              :image
+;;              "https://fabrics-store.com/images/product/FS_F_14941680264199_1000x1000.jpg",
+;;              :user-id 23,
+;;              :shade "medium",
+;;              :created-at 1705416147,
+;;              :yards 3,
+;;              :content "linen"})
+
+;;;;;;;;;
+
 (coast/q '[:select id
            :from member
            :where [:email ?email]]
@@ -43,32 +79,9 @@
            :order yards desc])
 ; returned all fabrics in yards descending order
 
-
-(coast/q '[:select * 
-           :from fabric
-           :where [:user-id "20"]
-           :order yards desc])
-;; returns all fabrics from user-id 20, by order of descending yards
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; NEED TO SEE REQUEST
 
-;; to be continued
-(defn do-stuff [request]
-  (let [user-id (-> request
-                    :session
-                    :member/id)])
-
-  (coast/q '[:select * 
-             :from fabric
-             :where [:user-id ?user-id]
-             :order yards desc]
-           {:user-id user-id}))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (coast/q '[:select * 
            :from fabric
@@ -191,3 +204,63 @@
                         :from fabric]))
 ; get all the values
 ;; => ["green" "black" "blue" "brown" "yellow" "grey" "purple" "red"]
+
+
+@fabric/debug-f
+
+(println @fabric/debug-f)
+
+;; => {:cookies
+;;     {"id"
+;;      {:value
+;;       "/B/dQOnfGMZa43eRwRMciCJ4cNsLRArTT9l67giQiVsPNFs7NJN6ca4DheTgpR9t--hHdfMPgBFWYqxnqCldvpXsqbK3ySbC9mPBrONnSdeyI="}},
+;;     :remote-addr "0:0:0:0:0:0:0:1",
+;;     :raw-params {},
+;;     :params {},
+;;     :flash nil,
+;;     :coerced-params {},
+;;     :headers
+;;     {"sec-fetch-site" "same-origin",
+;;      "host" "localhost:1337",
+;;      "user-agent"
+;;      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+;;      "cookie"
+;;      "id=%2FB%2FdQOnfGMZa43eRwRMciCJ4cNsLRArTT9l67giQiVsPNFs7NJN6ca4DheTgpR9t--hHdfMPgBFWYqxnqCldvpXsqbK3ySbC9mPBrONnSdeyI%3D",
+;;      "referer" "http://localhost:1337/login",
+;;      "connection" "keep-alive",
+;;      "upgrade-insecure-requests" "1",
+;;      "accept"
+;;      "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+;;      "accept-language" "en-US,en;q=0.9",
+;;      "sec-fetch-dest" "document",
+;;      "accept-encoding" "gzip, deflate",
+;;      "sec-fetch-mode" "navigate"},
+;;     :async-channel
+;;     #object[org.httpkit.server.AsyncChannel 0x249c6396 "0.0.0.0/0.0.0.0:1337<->null"],
+;;     :server-port 1337,
+;;     :coast.router/name :fabric/index,
+;;     :content-length 0,
+;;     :form-params {},
+;;     :websocket? false,
+;;     :session/key
+;;     "/B/dQOnfGMZa43eRwRMciCJ4cNsLRArTT9l67giQiVsPNFs7NJN6ca4DheTgpR9t--hHdfMPgBFWYqxnqCldvpXsqbK3ySbC9mPBrONnSdeyI=",
+;;     :query-params {},
+;;     :content-type nil,
+;;     :character-encoding "utf8",
+;;     :uri "/fabrics",
+;;     :server-name "localhost",
+;;     :anti-forgery-token
+;;     "joeAlxFgUcqfoYaU+TRhF9hsfgp0QpohQY08IINHZFYHYxRuxKquLPB8CwwIJCEueKqaRAaTqIxiO5kw",
+;;     :original-request-method :get,
+;;     :query-string nil,
+;;     :body nil,
+;;     :multipart-params {},
+;;     :scheme :http,
+;;     :request-method :get,
+;;     :session #:member{:email "me@me.com"}}
+
+(components/member-email @fabric/debug-f)
+;; => "me@me.com"
+
+(components/member-id "me@me.com")
+;; => 23
