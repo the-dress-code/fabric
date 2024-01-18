@@ -102,7 +102,7 @@
   (let [email (-> request
                   :session
                   :member/email)]
-    (if email
+    (if email ;; if email exists...
       (let [id (-> (coast/q '[:select id
                               :from member
                               :where [:email ?email]]

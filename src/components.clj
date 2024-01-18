@@ -163,6 +163,14 @@
       :member/email))
 
 
+(defn member-id [email]
+  (-> (coast/q '[:select id
+                 :from member
+                 :where [:email ?email]]
+               {:email email}) 
+      first
+      :id))
+
 (defn results 
   ([request query]
    (results request query {}))
