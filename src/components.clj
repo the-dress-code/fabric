@@ -158,10 +158,9 @@
 
 
 (defn member-email [request]
-  (let [email (-> request
-                  :session
-                  :member/email)]
-    email))
+  (-> request
+      :session
+      :member/email))
 
 
 (defn results 
