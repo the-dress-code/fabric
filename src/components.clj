@@ -10,10 +10,12 @@
      (coast/js "bundle.js")]
     [:body
      [:div {:class "banner"}
-      "Fabric Stash " " [ Home ] " " [ About ] " "Hi,  " (member-email request) ""     
-      (coast/form-for :session/delete
-                      [:input {:type "submit" :value "Sign out"}]) ;; borrowed this form from dashboard
-      ]
+      "Fabric Stash " " [ Home ] " " [ About ] " 
+      (if (member-email request) 
+        [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
+         (coast/form-for :session/delete
+                         [:input {:type "submit" :value "Sign out"}])]
+        [:div {:class "banner"} " [ Log In ] " " [ Sign Up ] "])]
      body]])
 
 
