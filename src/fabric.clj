@@ -1,12 +1,16 @@
 (ns fabric
   (:require [coast]
-            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column where-filters yards-min]]))
+            [components :refer [container tc link-to table thead tbody td th tr button-to text-muted mr2 dl dd dt img submit select option input label results get-column where-filters yards-min member-email member-id]]))
 
 
 (defn index [request]
   (results request '[:select *
                      :from fabric
-                     :order color desc yards desc structure desc]))
+                     :where [:user-id ?user-id]
+                     :order color desc yards desc structure desc]
+           {:user-id (-> request
+                         member-email
+                         member-id)}))
 
 
 (defn view [request]
