@@ -185,6 +185,8 @@
           (coast/flash "Something went wrong!")))))
 
 
+;;; resume here
+
 (defn answers [request]
   (let [params (:params request)
         yards (::yards params)
@@ -193,18 +195,23 @@
         weight (::weight params)
         structure (::structure params)
         content (::content params)
+        user-id-filter [user-id ?user-id]
         filters (where-filters params)]
 
+    (tap> params)
     (results request (conj '[:select *
-                                    :from fabric
-                                    :order image desc yards desc structure desc color desc]
+                             :from fabric
+                             :order image desc yards desc structure desc color desc]
                            :where filters)
              {:yards yards
               :shade shade 
               :color color
               :weight weight
               :structure structure
-              :content content})))
+              :content content
+              :user-id (-> request
+                         member-email
+                         member-id)})))
 
 
 (defn search [request]
@@ -249,5 +256,38 @@
 (add-tap #(reset! debug-f %))
 
 @debug-f
+;; => {:__anti-forgery-token
+;;     "a3JTYvR5cqXMbc3ohcsz4xM77KW6dXRwIToz7GYvrSMPFGcDjZw1zXTjS5QCpDksezQH25tM/+b/Lkf/",
+;;     :fabric/yards nil,
+;;     :fabric/shade nil,
+;;     :fabric/color "green",
+;;     :fabric/weight "midweight",
+;;     :fabric/structure "woven",
+;;     :fabric/content nil}
+
+
+
+;; => {:__anti-forgery-token
+;;     "a3JTYvR5cqXMbc3ohcsz4xM77KW6dXRwIToz7GYvrSMPFGcDjZw1zXTjS5QCpDksezQH25tM/+b/Lkf/",
+;;     :fabric/yards nil,
+;;     :fabric/shade nil,
+;;     :fabric/color "green",
+;;     :fabric/weight nil,
+;;     :fabric/structure nil,
+;;     :fabric/content nil}
+
+(where-filters @debug-f)
+;; => [[color ?color] [weight ?weight] [structure ?structure]]
+
+; after asking for green fabrics:
+
+;; => {:__anti-forgery-token
+;;     "a3JTYvR5cqXMbc3ohcsz4xM77KW6dXRwIToz7GYvrSMPFGcDjZw1zXTjS5QCpDksezQH25tM/+b/Lkf/",
+;;     :fabric/yards nil,
+;;     :fabric/shade nil,
+;;     :fabric/color "green",
+;;     :fabric/weight nil,
+;;     :fabric/structure nil,
+;;     :fabric/content nil}
 
 )
