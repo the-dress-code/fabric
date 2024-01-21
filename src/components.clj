@@ -14,8 +14,8 @@
       (if (member-email request) 
         [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
          (coast/form-for :session/delete
-                         [:input {:type "submit" :value "Sign out"}])]
-        [:div {:class "banner"} " [ Log In ] " " [ Sign Up ] "])]
+                         [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+                                  :type "submit" :value "Sign out"}])]
      body]])
 
 
