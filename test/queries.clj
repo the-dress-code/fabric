@@ -3,6 +3,22 @@
             [components]
             [fabric]))
 
+;; in fabric/answers: make user-id info one of the parameters used to fetch fabric in the where clause.
+
+;; conj [user-id ?user-id] to (where-filters params)
+
+(where-filters @debug-f)
+[[color ?color] [weight ?weight] [structure ?structure]]
+
+(let [member-filter [user-id ?user-id]]
+  (conj (where-filters @debug-f) member-filter))
+;; => Syntax error compiling at (src/fabric.clj:221:1).
+;;    Unable to resolve symbol: user-id in this context
+
+
+(conj [[1 ] [2] [3]] [4])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (coast/q '[:select * 
            :from fabric
