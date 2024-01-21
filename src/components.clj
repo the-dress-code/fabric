@@ -12,10 +12,16 @@
      [:div {:class "banner"}
       "Fabric Stash " " [ Home ] " " [ About ] " 
       (if (member-email request) 
+
         [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
+         
          (coast/form-for :session/delete
                          [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
                                   :type "submit" :value "Sign out"}])]
+
+        [:div {:class "banner"} 
+         (link-to (coast/url-for :session/build) "LOGIN")
+         (link-to (coast/url-for :member/build) "SIGN UP")])]
      body]])
 
 
