@@ -15,7 +15,7 @@ html, body {
 }
 
 .banner {
-    background-color: lightslategrey;
+    background-color: lightsteelblue;
     color: white;
     display: flex;
     justify-content: center;
