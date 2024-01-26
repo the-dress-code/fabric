@@ -185,8 +185,6 @@
           (coast/flash "Something went wrong!")))))
 
 
-;;; resume here
-
 (defn answers [request]
   (let [params (:params request)
         yards (::yards params)
@@ -195,10 +193,9 @@
         weight (::weight params)
         structure (::structure params)
         content (::content params)
-        user-id-filter [user-id ?user-id]
-        filters (where-filters params)]
+        user-id '[user-id ?user-id]
+        filters (conj (where-filters params) user-id)]
 
-    (tap> params)
     (results request (conj '[:select *
                              :from fabric
                              :order image desc yards desc structure desc color desc]

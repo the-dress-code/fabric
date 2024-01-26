@@ -3,20 +3,20 @@
             [components]
             [fabric]))
 
-;; in fabric/answers: make user-id info one of the parameters used to fetch fabric in the where clause.
+;; in fabric/answers: 
 
-;; conj [user-id ?user-id] to (where-filters params)
+;; in the where clause of your query, make user-id info one of the parameters used to fetch fabric
+
+;; can i add [user-id ?user-id] to the result of (where-filters params)
+
+;; what is an example of your filters for the where clause?
 
 (where-filters @debug-f)
-[[color ?color] [weight ?weight] [structure ?structure]]
+; [[color ?color] [weight ?weight] [structure ?structure]]
 
-(let [member-filter [user-id ?user-id]]
-  (conj (where-filters @debug-f) member-filter))
-;; => Syntax error compiling at (src/fabric.clj:221:1).
-;;    Unable to resolve symbol: user-id in this context
+;; what do you want your filters to be?
 
-
-(conj [[1 ] [2] [3]] [4])
+;; [[color ?color] [weight ?weight] [structure ?structure] [user-id ?user-id]]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

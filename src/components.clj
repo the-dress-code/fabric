@@ -2,6 +2,29 @@
   (:require [coast]))
 
 
+(defn member-email [request]
+  (-> request
+      :session
+      :member/email))
+
+
+(defn member-id [email]
+  (-> (coast/q '[:select id
+                 :from member
+                 :where [:email ?email]]
+               {:email email}) 
+      first
+      :id))
+
+
+(defn link-to 
+  ([url body]
+   (link-to url "" body))
+  ([url class body]
+   [:a {:href url :class (str "f6 link underline blue " class)}
+    body]))
+
+
 (defn layout [request body]
   [:html
     [:head
@@ -23,14 +46,6 @@
          (link-to (coast/url-for :session/build) "LOGIN")
          (link-to (coast/url-for :member/build) "SIGN UP")])]
      body]])
-
-
-(defn link-to 
-  ([url body]
-   (link-to url "" body))
-  ([url class body]
-   [:a {:href url :class (str "f6 link underline blue " class)}
-    body]))
 
 
 (defn button-to
@@ -164,21 +179,6 @@
   [:div {:class "tc"}
    body])
 
-
-(defn member-email [request]
-  (-> request
-      :session
-      :member/email))
-
-
-(defn member-id [email]
-  (-> (coast/q '[:select id
-                 :from member
-                 :where [:email ?email]]
-               {:email email}) 
-      first
-      :id))
-
 (defn results 
   ([request query]
    (results request query {}))
@@ -232,7 +232,7 @@
                                            :table table})))))
 
 
-(defn yards-min  [x]
+(defn yards-min [x]
   [(str "yards >= " x)])
 
 
