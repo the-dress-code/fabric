@@ -253,38 +253,5 @@
 (add-tap #(reset! debug-f %))
 
 @debug-f
-;; => {:__anti-forgery-token
-;;     "a3JTYvR5cqXMbc3ohcsz4xM77KW6dXRwIToz7GYvrSMPFGcDjZw1zXTjS5QCpDksezQH25tM/+b/Lkf/",
-;;     :fabric/yards nil,
-;;     :fabric/shade nil,
-;;     :fabric/color "green",
-;;     :fabric/weight "midweight",
-;;     :fabric/structure "woven",
-;;     :fabric/content nil}
-
-
-
-;; => {:__anti-forgery-token
-;;     "a3JTYvR5cqXMbc3ohcsz4xM77KW6dXRwIToz7GYvrSMPFGcDjZw1zXTjS5QCpDksezQH25tM/+b/Lkf/",
-;;     :fabric/yards nil,
-;;     :fabric/shade nil,
-;;     :fabric/color "green",
-;;     :fabric/weight nil,
-;;     :fabric/structure nil,
-;;     :fabric/content nil}
-
-(where-filters @debug-f)
-;; => [[color ?color] [weight ?weight] [structure ?structure]]
-
-; after asking for green fabrics:
-
-;; => {:__anti-forgery-token
-;;     "a3JTYvR5cqXMbc3ohcsz4xM77KW6dXRwIToz7GYvrSMPFGcDjZw1zXTjS5QCpDksezQH25tM/+b/Lkf/",
-;;     :fabric/yards nil,
-;;     :fabric/shade nil,
-;;     :fabric/color "green",
-;;     :fabric/weight nil,
-;;     :fabric/structure nil,
-;;     :fabric/content nil}
 
 )
