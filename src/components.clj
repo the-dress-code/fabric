@@ -34,6 +34,7 @@
     [:body
      [:div {:class "banner"}
       "Fabric Stash " " [ Home ] " " [ About ] " 
+
       (if (member-email request) 
 
         [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
@@ -43,6 +44,7 @@
                                   :type "submit" :value "Sign out"}])]
 
         [:div {:class "banner"} 
+
          (link-to (coast/url-for :session/build) "LOGIN")
          (link-to (coast/url-for :member/build) "SIGN UP")])]
      body]])
@@ -252,3 +254,31 @@
                                   symbol)])))) 
             []
             no-token)))
+
+
+(comment
+
+(def debug-c (atom nil))
+
+(add-tap #(reset! debug-c %))
+
+@debug-c
+
+(:uri @debug-c)
+;; => "/sign-up"
+
+(def public-routes    	
+  {"/sign-up" :public
+   "/login" :public})
+
+(if (contains? public-routes (:uri @debug-c))
+  (:uri @debug-c)
+  "your request contains routes that are restricted")
+;; => "/sign-up"
+
+(if (contains? public-routes "/fabrics/answers")
+  (:uri @debug-c)
+  "your request contains routes that are restricted")
+;; => "your request contains routes that are restricted"
+
+)
