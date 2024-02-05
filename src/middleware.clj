@@ -14,12 +14,12 @@
                          "/members" :public
                          "/login" :public
                          "/sessions" :public}]
-      (if (= :public (get public-routes (:uri request)))
-        (handler request)
-        (coast/unauthorized "No.")))))
+      (if (components/member-email request) ;; if there is a member email in the request,
+        (handler request) ;; let 'em do what they want
+        (if (= :public (get public-routes (:uri request))) ;; otherwise, check if route is public
+          (handler request) ;; if so, let 'em do what they want
+          (coast/redirect-to :member/build)))))) ;; otherwise, re-direct to the sign-up page
 
-;; update line 19 to the following:
-#_(coast/redirect-to :member/build)
 
 (comment
 
