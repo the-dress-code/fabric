@@ -25,29 +25,42 @@
     body]))
 
 
+(def public-routes    	
+  {"/sign-up" :public 
+   "/members" :public
+   "/login"    :public
+   "/sessions" :public})
+
+
+#_(if (= :public (get public-routes (:uri request)))
+  ;; then proceed with whatever youre doing
+  ;; otherwise, re-direct to sign up page "/sign-up
+  (coast/redirect-to :member/build))
+
+
 (defn layout [request body]
   [:html
-    [:head
-     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-     (coast/css "bundle.css")
-     (coast/js "bundle.js")]
-    [:body
-     [:div {:class "banner"}
-      "Fabric Stash " " [ Home ] " " [ About ] " 
+   [:head
+    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
+    (coast/css "bundle.css")
+    (coast/js "bundle.js")]
+   [:body
+    [:div {:class "banner"}
+     "Fabric Stash " " [ Home ] " " [ About ] " 
 
-      (if (member-email request) 
+     (if (member-email request) 
 
-        [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
-         
-         (coast/form-for :session/delete
-                         [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
-                                  :type "submit" :value "Sign out"}])]
+       [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
+        
+        (coast/form-for :session/delete
+                        [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+                                 :type "submit" :value "Sign out"}])]
 
-        [:div {:class "banner"} 
+       [:div {:class "banner"} 
 
-         (link-to (coast/url-for :session/build) "LOGIN")
-         (link-to (coast/url-for :member/build) "SIGN UP")])]
-     body]])
+        (link-to (coast/url-for :session/build) "LOGIN")
+        (link-to (coast/url-for :member/build) "SIGN UP")])]
+    body]])
 
 
 (defn button-to
@@ -264,21 +277,9 @@
 
 @debug-c
 
-(:uri @debug-c)
-;; => "/sign-up"
-
-(def public-routes    	
-  {"/sign-up" :public
-   "/login" :public})
-
-(if (contains? public-routes (:uri @debug-c))
-  (:uri @debug-c)
-  "your request contains routes that are restricted")
-;; => "/sign-up"
-
-(if (contains? public-routes "/fabrics/answers")
-  (:uri @debug-c)
-  "your request contains routes that are restricted")
-;; => "your request contains routes that are restricted"
+(if (= :public (get public-routes (:uri request)))
+  ;; then proceed with whatever youre doing
+  ;; otherwise, re-direct to sign up page "/sign-up
+  (coast/redirect-to :member/build))
 
 )
