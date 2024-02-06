@@ -10,7 +10,7 @@
 (defn build [request]
   (container {:mw 6}
     
-    (thead "LOGIN")
+    #_(thead "")
 
     (when-not (or (some? (:error/message request))
                 (some? (-> request
@@ -36,9 +36,9 @@
      (label {:for "member/password"} "Password")
      (input {:type "password" :name "member/password" :required true})
 
-     [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+     [:input {:class "w-100 input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
-             :value "LOGIN"}]
+             :value "LOG IN"}]
 
      [:p [:br] "Need an account? " (link-to (coast/url-for :member/build) "SIGN UP")])))
 
