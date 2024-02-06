@@ -36,11 +36,17 @@
      #_(label {:for "member/password"} "Password")
      (input {:type "password" :name "member/password" :placeholder "Password" :required true})
 
+     [:p]
+
      [:input {:class "w-100 input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
              :value "LOG IN"}]
 
-     [:p [:br] "Need an account? " (link-to (coast/url-for :member/build) "SIGN UP")])))
+     [:div {:class "centered-box"}
+
+      [:p "Forgot password?"]
+      [:p]
+      [:p "Need an account? " (link-to (coast/url-for :member/build) "SIGN UP")]])))
 
 
 (defn create [request]

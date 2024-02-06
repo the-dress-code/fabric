@@ -26,3 +26,19 @@ html, body {
     padding-left: 10px;
     font-size: 120%;
 }
+.centered-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.centered-box p {
+    flex-basis: 100%;
+}
+
+.centered-box p:nth-child(2) {
+    width: 100%;
+    border-bottom: 1px solid #dadde1;
+}
