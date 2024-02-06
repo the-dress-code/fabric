@@ -18,7 +18,7 @@ html, body {
     background-color: lightsteelblue;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-top: 10px;
     padding-right: 10px;
@@ -26,6 +26,11 @@ html, body {
     padding-left: 10px;
     font-size: 120%;
 }
+
+.banner div {
+    flex-basis: 100%;
+}
+
 .centered-box {
     display: flex;
     justify-content: center;

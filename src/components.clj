@@ -40,20 +40,21 @@
     (coast/js "bundle.js")]
    [:body
     [:div {:class "banner"}
-     "Fabric Stash " " [ Home ] " " [ About ] " 
+     [:div "Fabric Stash"]
+     [:div "About"
 
-     (if (member-email request) 
+      (if (member-email request) 
 
-       [:div {:class "banner"} " [ Hi,  " (member-email request) " ] " " "    
-        
-        (coast/form-for :session/delete
-                        [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
-                                 :type "submit" :value "Sign out"}])]
+        [:div 
+         [:div " [ Hi,  " (member-email request) " ] " " "]    
+         [:div 
+          (coast/form-for :session/delete
+                          [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+                                   :type "submit" :value "Sign out"}])]]
 
-       [:div {:class "banner"} 
-
-        (link-to (coast/url-for :session/build) "LOGIN")
-        (link-to (coast/url-for :member/build) "SIGN UP")])]
+        [:div
+         [:div (link-to (coast/url-for :session/build) "LOGIN")]
+         [:div (link-to (coast/url-for :member/build) "SIGN UP")]])]]
     body]])
 
 
