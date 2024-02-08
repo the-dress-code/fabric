@@ -18,7 +18,7 @@
         (handler request) ;; let 'em do what they want
         (if (= :public (get public-routes (:uri request))) ;; otherwise, check if route is public
           (handler request) ;; if so, let 'em do what they want
-          (coast/redirect-to :member/build)))))) ;; otherwise, re-direct to the sign-up page
+          (coast/redirect-to :session/build)))))) ;; otherwise, re-direct to the login page
 
 
 (comment
