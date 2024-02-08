@@ -29,7 +29,7 @@ html, body {
     font-size: 120%;
 }
 
-.banner p {
+.banner div {
  
     flex: none;
     flex-direction: row;
