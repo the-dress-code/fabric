@@ -30,11 +30,11 @@
     (label {:for "member/password"} "Password")
     (input {:type "password" :name "member/password" :required true})
 
-    [:Input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+    [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
              :value "SIGN UP"}]
 
-    [:P [:br] "Already a member? " (link-to (coast/url-for :session/build) "LOGIN")])))
+    [:p [:br] "Already a member? " (link-to (coast/url-for :session/build) "LOGIN")])))
 
 
 (defn create [request]

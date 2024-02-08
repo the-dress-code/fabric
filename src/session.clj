@@ -38,15 +38,17 @@
 
      [:p]
 
-     [:input {:class "w-100 input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+     [:input {:class "w-100 input-reset pointer dim db bn f10 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
-             :value "LOG IN"}]
+             :value "LOG IN"}])
 
-     [:div {:class "centered-box"}
+    [:div {:class "centered-box"}
 
-      [:p "Forgot password?"]
-      [:p]
-      [:p "Need an account? " (link-to (coast/url-for :member/build) "SIGN UP")]])))
+     [:p "Forgot password?"]
+     [:p]
+     [:p (coast/form-for :member/build
+                         [:input {:class "input-reset pointer dim db bn f10 br2 ph3 pv2 dib white bg-green"
+                                  :type "submit" :value "Create New Account"}])]]))
 
 
 (defn create [request]
