@@ -18,8 +18,10 @@ html, body {
     background-color: lightsteelblue;
     color: white;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
+    gap: 15px;
     padding-top: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
@@ -27,8 +29,10 @@ html, body {
     font-size: 120%;
 }
 
-.banner div {
-    flex-basis: 100%;
+.banner p {
+ 
+    flex: none;
+    flex-direction: row;
 }
 
 .centered-box {
