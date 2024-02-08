@@ -40,22 +40,18 @@
     (coast/js "bundle.js")]
    [:body
     [:div {:class "banner"}
-     [:p "Fabric Stash"
+     [:div "Fabric Stash"]
 
-      [:p "About"
+     [:div "About"]
 
-       (if (member-email request) 
+     (when (member-email request) 
 
-         [:p
-          [:p " [ Hi,  " (member-email request) " ] " " "]    
-          [:p 
-           (coast/form-for :session/delete
-                           [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
-                                    :type "submit" :value "Sign out"}])]]
-
-         [:p
-          [:p (link-to (coast/url-for :session/build) "LOGIN")]
-          [:p (link-to (coast/url-for :member/build) "SIGN UP")]])]]]
+       [:div
+        [:div " [ Hi,  " (member-email request) " ] " " "]    
+        [:div
+         (coast/form-for :session/delete
+                         [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
+                                  :type "submit" :value "Sign out"}])]])]
     body]])
 
 
