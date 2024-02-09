@@ -11,7 +11,6 @@
 (defn build [request]
   (container {:mw 6}
 
-   (thead "SIGN UP")
 
    (when-not (or (some? (:error/message request))
                  (some? (-> request
