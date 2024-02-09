@@ -11,12 +11,11 @@
 (defn build [request]
   (container {:mw 6}
 
-
    (when-not (or (some? (:error/message request))
                  (some? (-> request
                            :params
-                           :error))) 
-      [:p [:br]])
+                           :error)))) 
+   [:p [:br]]
 
    (when (some? (:error/message request))
                   [:div (:error/message request)])
