@@ -9,8 +9,6 @@
 
 (defn build [request]
   (container {:mw 6}
-    
-    #_(thead "")
 
     (when-not (or (some? (:error/message request))
                 (some? (-> request
