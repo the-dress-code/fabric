@@ -22,11 +22,6 @@
 
    (coast/form-for ::create
 
-    (label {:for "member/email"} "Email")
-    (input {:type "text" :name "member/email" :required true})
-
-    (label {:for "member/password"} "Password")
-    (input {:type "password" :name "member/password" :required true})
 
     [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
              :type "submit" 
