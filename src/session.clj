@@ -28,11 +28,6 @@
 
     (coast/form-for ::create
 
-    #_ (label {:for "member/email"} "Email")
-     (input {:type "text" :name "member/email" :placeholder "Email" :required true})
-
-     #_(label {:for "member/password"} "Password")
-     (input {:type "password" :name "member/password" :placeholder "Password" :required true})
 
      [:p]
 
