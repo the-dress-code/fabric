@@ -22,12 +22,15 @@
 
    (coast/form-for ::create
 
+                   (input {:type "text" :name "member/email" :placeholder "Email" :required true})
+                   (input {:type "password" :name "member/password" :placeholder "Password" :required true})
+                   [:p]
+                   (input {:class "w-100 input-reset pointer dim db bn f10 br2 ph3 pv2 dib white bg-blue"
+                           :type "submit" 
+                           :value "SIGN UP"}))
 
-    [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
-             :type "submit" 
-             :value "SIGN UP"}]
-
-    [:p [:br] "Already a member? " (link-to (coast/url-for :session/build) "LOGIN")])))
+   [:div {:class "centered-box"}
+    [:p "Already a member? " (link-to (coast/url-for :session/build) "LOG IN")]]))
 
 
 (defn create [request]
