@@ -48,8 +48,7 @@
 
        [:div
         [:div " [ Hi,  " (member-email request) " ] " " "]    
-        [:div
-         (coast/form-for :session/delete
+        [:div (coast/form-for :session/delete
                          [:input {:class "input-reset pointer dim db bn f6 br2 ph3 pv2 dib white bg-blue"
                                   :type "submit" :value "Sign out"}])]])]
     body]])

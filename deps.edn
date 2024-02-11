@@ -7,7 +7,9 @@
   buddy/buddy                 {:mvn/version "2.0.0"}}
 
  :aliases
- {:test
+ {:build {:deps {io.github.clojure/tools.build {:git/tag "v0.9.6" :git/sha "8e78bcc"}}
+          :ns-default build}
+  :test
   {:extra-paths ["test"]
    :main-opts   ["-m" "cognitect.test-runner"]
    :extra-deps
