@@ -7,7 +7,8 @@
   buddy/buddy                 {:mvn/version "2.0.0"}}
 
  :aliases
- {:build {:deps {io.github.clojure/tools.build {:git/tag "v0.9.6" :git/sha "8e78bcc"}}
+ {:build 
+  {:deps {io.github.clojure/tools.build {:git/tag "v0.9.6" :git/sha "8e78bcc"}}
           :ns-default build}
   :test
   {:extra-paths ["test"]
@@ -16,10 +17,10 @@
    {com.cognitect/test-runner {:git/url "git@github.com:cognitect-labs/test-runner"
                                :sha     "5f2b5c2efb444df76fb5252102b33f542ebf7f58"}}}
 
-  :uberjar
+  #_#_:uberjar
   {:main-opts  ["-m" "mach.pack.alpha.capsule"
                 "target/fabric.jar"]
    :extra-deps {pack/pack.alpha {:git/url "https://github.com/juxt/pack.alpha.git"
                                  :sha     "2769a6224bfb938e777906ea311b3daf7d2220f5"}}}
 
-  :repl {:extra-deps {nrepl {:mvn/version "0.6.0"}}}}}
+  :repl {:extra-deps {nrepl/nrepl {:mvn/version "0.6.0"}}}}}
