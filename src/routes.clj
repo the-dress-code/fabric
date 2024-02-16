@@ -11,7 +11,7 @@
     (coast/site
 
     []
-
+  
      (coast/with middleware/auth
 
         [:get "/dashboard" :member/dashboard]
