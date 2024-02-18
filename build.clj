@@ -1,7 +1,5 @@
 (ns build
-  (:require [clojure.tools.build.api :as b]
-            #_[coast.assets :as a]
-            ))
+  (:require [clojure.tools.build.api :as b]))
 
 (def lib 'com.github.the-dress-code/fabric)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
@@ -14,9 +12,10 @@
 
 (defn uber [_]
   (clean nil)
-  #_(a/-main)
   (b/copy-dir {:src-dirs ["src" "db" "resources"]
                :target-dir class-dir})
+  #_(b/copy-file {:src "fabric_dev.sqlite3"
+                :target class-dir})
   (b/compile-clj {:basis @basis
                   :ns-compile '[server]
                   :class-dir class-dir})
