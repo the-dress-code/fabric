@@ -268,9 +268,4 @@
 
 @debug-c
 
-(if (= :public (get public-routes (:uri request)))
-  ;; then proceed with whatever youre doing
-  ;; otherwise, re-direct to sign up page "/sign-up
-  (coast/redirect-to :member/build))
-
 )
